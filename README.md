@@ -1,50 +1,52 @@
-# Welcome to your Expo app 👋
+#  TRIVIALINC
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Una breve descripción de lo que hace el proyecto.
 
-## Get started
+## Tabla de Contenidos
+1. [Instalación](#instalación)
+2. [Uso](#uso)
+3. [Contribuir](#contribuir)
+4. [Autor](#autor)
+5. [Licencia](#licencia)
+6. [Contacto](#contacto)
 
-1. Install dependencies
+## Instalación
 
-   ```bash
-   npm install
-   ```
+1. Clonar el repositorio:
+   git clone https://github.com/luk4sk4/trivialinc_.git
 
-2. Start the app
+2. Tener instalado y funcionando React Native y Expo (con sus correspondientes dependencias)
+     React Native: https://reactnative.dev/docs/environment-setup
+     Expo: https://docs.expo.dev/get-started/set-up-your-environment/
 
-   ```bash
-    npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
+## Uso
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+1. npx expo start
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Contribuir
 
-## Get a fresh project
+1. Haz un fork del repositorio.
 
-When you're ready, run:
+2. Crea una nueva rama:
+   git checkout -b nombre-de-tu-rama
 
-```bash
-npm run reset-project
-```
+3. Realiza tus cambios.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+4. Haz commit de tus cambios:
+   git commit -m "Descripción de los cambios"
 
-## Learn more
+5. Haz push a la rama:
+   git push origin nombre-de-tu-rama
 
-To learn more about developing your project with Expo, look at the following resources:
+6. Abre un Pull Request.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+# Autor
 
-## Join the community
+   Lucas (luk4sk4) =>  https://github.com/luk4sk4
 
-Join our community of developers creating universal apps.
+# Contacto
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+   Github: https://github.com/luk4sk4
+   Email: luk4s.forward@gmail.com
+   
