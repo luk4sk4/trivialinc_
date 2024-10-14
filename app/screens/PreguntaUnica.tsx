@@ -187,6 +187,9 @@ useEffect(() => {
             />
           </View>
         : null}
+          <View style={styles.midSmallContainer}>
+            <Text style={styles.text1}>CATEGORIA: {}</Text>
+          </View>
           <View style={[styles.questionBox, { borderColor: color }]}>
             {see_question ? 
             <Text style={styles.text2}>{see_question}{question} KJHDFKJ HSDFKJHSDJKFHKLS JFHLKAH SFKDSAHF LKJHASDFI ULKJHSAULIFKJDHA LSUKJFHKAJ SFHL KJASDHFLKJ   ASHFLKJASHDKLFJ</Text>
@@ -196,6 +199,11 @@ useEffect(() => {
               style={styles.stars}
               source={require('../../assets/images/flip.png')}
               />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.midSmallContainer}>
+          <TouchableOpacity style={styles.extraOptions}>
+              <Text style={styles.text1}>CAMBIAR PREGUNTA</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -286,12 +294,12 @@ const styles = StyleSheet.create({
   questionBox: {
     width: 350,
     height: 250,
-    margin: 25,
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: 'white', //quitar esto
     borderWidth: 5,
     borderRadius: 50,
+    margin: 20,
   },
   stars: {
     width: 50,
@@ -327,7 +335,22 @@ const styles = StyleSheet.create({
     width: 500,
     height: 500,
     opacity: 0.2,
-  }
+  },
+  midSmallContainer: {
+    width: 500,
+    height: 75,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  extraOptions: {
+    width: 250,
+    height: 50,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default PreguntaUnica;

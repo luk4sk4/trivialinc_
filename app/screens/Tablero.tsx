@@ -45,6 +45,8 @@ function Tablero({ navigation }) {
 
   const context = useContext(MyContext);
 
+  const [leyenda_pop_up, setLeyendaPopUp] = useState(false);
+
   const [turn, setTurn] = useState(1);
   const [dice, setDice] = useState(false);
   const [dice2, setDice2] = useState(false);
@@ -341,18 +343,46 @@ function Tablero({ navigation }) {
   return (
     <View style={styles.container}>
         <View style={styles.topContainer}>
-          <View style={styles.settingsBox}>
-          <TouchableOpacity style={styles.button} onPress={HandleNextTurn}>
-            <Text style={styles.buttonText}>Press Me</Text>
+          <View style={styles.backBox}>
+              <TouchableOpacity onPress={() => navigation.navigate('CategoriasMain')}>
+                <Image
+                style={styles.topImages}
+                source={require('../../assets/images/pin_white.png')}
+                />
+              </TouchableOpacity>
+          </View>
+          
+          <View style={styles.leyendaBox}>
+            <TouchableOpacity onPress={() => leyenda_pop_up ? setLeyendaPopUp(false) : setLeyendaPopUp(true)}>
+                <Image
+                style={styles.leyenda}
+                source={require('../../assets/images/TRIVIA.png')}
+                />
+            </TouchableOpacity>
+          </View>
+
+          <View>
+          <TouchableOpacity style={styles.backBox} onPress={HandleNextTurn}>
+                <Image
+                style={styles.topImages}
+                source={require('../../assets/images/pin_white.png')}
+                />
           </TouchableOpacity>
           </View>
-          <View style={styles.leyendaBox}>
-            
-          </View>
-          <View style={styles.backBox}>
-            
-          </View>
+          
         </View>
+        {leyenda_pop_up ? 
+        <View style={styles.midContainer}>
+          <TouchableOpacity onPress={() => setLeyendaPopUp(false)}>
+          <Text style={[styles.leyendaText, {color:'#f90a0a'}]}>CATEGORÍA 1: {context?.category_red}</Text>
+          <Text style={[styles.leyendaText, {color:'#37ee2e'}]}>CATEGORÍA 2: {context?.category_green}</Text>
+          <Text style={[styles.leyendaText, {color:'#ff00c6'}]}>CATEGORÍA 3: {context?.category_pink}</Text>
+          <Text style={[styles.leyendaText, {color:'#00eaff'}]}>CATEGORÍA 4: {context?.category_blue}</Text>
+          <Text style={[styles.leyendaText, {color:'#ba00ff'}]}>CATEGORÍA 5: {context?.category_purple}</Text>
+          <Text style={[styles.leyendaText, {color:'#fff600'}]}>CATEGORÍA 6: {context?.category_yellow}</Text>
+          </TouchableOpacity>
+        </View>
+        :
         <View style={styles.midContainer}>
 
           {dice4 && (
@@ -481,7 +511,7 @@ function Tablero({ navigation }) {
             </View>
           }
           </View>
-        </View>
+        </View>}
         <View style={styles.bottomContainer}>
           <View style={styles.rowAstronauts}>
             {context?.number_of_players > 0 && (
@@ -667,8 +697,13 @@ const styles = StyleSheet.create({
       width: 150,
       height: 50,
     },
+    leyenda: {
+      width: 150,
+      height: 50,
+      resizeMode: 'contain',
+    },
     backBox: {
-      backgroundColor: 'green',
+      backgroundColor: 'red',
       margin: 25,
       width: 50,
       height: 50,
@@ -828,6 +863,17 @@ const styles = StyleSheet.create({
       flexDirection: 'row',   // Arrange items in rows
       flexWrap: 'wrap',       // Allow wrapping to the next line
       justifyContent: 'center',
+    },
+    topImages: {
+      width: 50,
+      height: 50,
+    },
+    leyendaText: {
+      margin: 10,
+      fontSize: 20,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      color: 'white',
     },
     });
 
