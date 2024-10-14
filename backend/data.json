@@ -1,0 +1,19 @@
+{
+    "categorias": [
+      {
+        "category": "Math",
+        "questions": [
+          {"PREGUNTA": "What is 2+2?", "RESPUESTA": "4"},
+          {"PREGUNTA": "What is the square root of 9?", "RESPUESTA": "3"}
+        ]
+      },
+      {
+        "category": "Science",
+        "questions": [
+          {"PREGUNTA": "What is H2O?", "RESPUESTA": "Water"},
+          {"PREGUNTA": "What planet is closest to the sun?", "RESPUESTA": "Mercury"}
+        ]
+      }
+    ]
+  }
+  
