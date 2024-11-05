@@ -100,78 +100,78 @@ function CategoriasClasicas({ navigation }) {
           <View style={styles.rowBox}>
             <TouchableOpacity
             style={[styles.category,
-            context?.category_red === "HISTORIA" ? styles.red : null,
-            context?.category_green === "HISTORIA" ? styles.green : null,
-            context?.category_pink === "HISTORIA" ? styles.pink : null,
-            context?.category_blue === "HISTORIA" ? styles.blue : null,
-            context?.category_purple === "HISTORIA" ? styles.purple : null,
-            context?.category_yellow === "HISTORIA" ? styles.yellow : null,
+            context?.category_red === "history" ? styles.red : null,
+            context?.category_green === "history" ?styles.green : null,
+            context?.category_pink === "history" ? styles.pink : null,
+            context?.category_blue === "history" ? styles.blue : null,
+            context?.category_purple === "history" ? styles.purple : null,
+            context?.category_yellow === "history" ? styles.yellow : null,
             ]}
-            onPress={() => category_selected({ name: 'HISTORIA' })}> 
+            onPress={() => category_selected({ name: 'history' })}> 
             <Text style={styles.buttonText}>HISTORIA</Text>
             </TouchableOpacity>
             <TouchableOpacity
             style={[styles.category,
-              context?.category_red === "GEOGRAFIA" ? styles.red : null,
-              context?.category_green === "GEOGRAFIA" ? styles.green : null,
-              context?.category_pink === "GEOGRAFIA" ? styles.pink : null,
-              context?.category_blue === "GEOGRAFIA" ? styles.blue : null,
-              context?.category_purple === "GEOGRAFIA" ? styles.purple : null,
-              context?.category_yellow === "GEOGRAFIA" ? styles.yellow : null,
+              context?.category_red === "geography" ? styles.red : null,
+              context?.category_green === "geography" ? styles.green : null,
+              context?.category_pink === "geography" ? styles.pink : null,
+              context?.category_blue === "geography" ? styles.blue : null,
+              context?.category_purple === "geography" ? styles.purple : null,
+              context?.category_yellow === "geography" ? styles.yellow : null,
               ]}
-              onPress={() => category_selected({ name: 'GEOGRAFIA' })}> 
+              onPress={() => category_selected({ name: 'geography' })}> 
             <Text style={styles.buttonText}>GEOGRAFIA</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.rowBox}>
           <TouchableOpacity
             style={[styles.category,
-              context?.category_red === "ARTEYLITERATURA" ? styles.red : null,
-              context?.category_green === "ARTEYLITERATURA" ? styles.green : null,
-              context?.category_pink === "ARTEYLITERATURA" ? styles.pink : null,
-              context?.category_blue === "ARTEYLITERATURA" ? styles.blue : null,
-              context?.category_purple === "ARTEYLITERATURA" ? styles.purple : null,
-              context?.category_yellow === "ARTEYLITERATURA" ? styles.yellow : null,
+              context?.category_red === "literature" ? styles.red : null,
+              context?.category_green === "literature" ? styles.green : null,
+              context?.category_pink === "literature" ? styles.pink : null,
+              context?.category_blue === "literature" ? styles.blue : null,
+              context?.category_purple === "literature" ? styles.purple : null,
+              context?.category_yellow === "literature" ? styles.yellow : null,
               ]}
-              onPress={() => category_selected({ name: 'ARTEYLITERATURA' })}> 
+              onPress={() => category_selected({ name: 'literature' })}> 
             <Text style={styles.buttonText}>ARTE Y LITERATURA</Text>
             </TouchableOpacity>
             <TouchableOpacity
             style={[styles.category,
-              context?.category_red === "CIENCIA" ? styles.red : null,
-              context?.category_green === "CIENCIA" ? styles.green : null,
-              context?.category_pink === "CIENCIA" ? styles.pink : null,
-              context?.category_blue === "CIENCIA" ? styles.blue : null,
-              context?.category_purple === "CIENCIA" ? styles.purple : null,
-              context?.category_yellow === "CIENCIA" ? styles.yellow : null,
+              context?.category_red === "science" ? styles.red : null,
+              context?.category_green === "science" ? styles.green : null,
+              context?.category_pink === "science" ? styles.pink : null,
+              context?.category_blue === "science" ? styles.blue : null,
+              context?.category_purple === "science" ? styles.purple : null,
+              context?.category_yellow === "science" ? styles.yellow : null,
               ]}
-              onPress={() => category_selected({ name: 'CIENCIA' })}> 
+              onPress={() => category_selected({ name: 'science' })}> 
             <Text style={styles.buttonText}>CIENCIA</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.rowBox}>
           <TouchableOpacity
             style={[styles.category,
-              context?.category_red === "ENTRETENIMIENTO" ? styles.red : null,
-              context?.category_green === "ENTRETENIMIENTO" ? styles.green : null,
-              context?.category_pink === "ENTRETENIMIENTO" ? styles.pink : null,
-              context?.category_blue === "ENTRETENIMIENTO" ? styles.blue : null,
-              context?.category_purple === "ENTRETENIMIENTO" ? styles.purple : null,
-              context?.category_yellow === "ENTRETENIMIENTO" ? styles.yellow : null,
+              context?.category_red === "etertainment" ? styles.red : null,
+              context?.category_green === "etertainment" ? styles.green : null,
+              context?.category_pink === "etertainment" ? styles.pink : null,
+              context?.category_blue === "etertainment" ? styles.blue : null,
+              context?.category_purple === "etertainment" ? styles.purple : null,
+              context?.category_yellow === "etertainment" ? styles.yellow : null,
               ]}
-              onPress={() => category_selected({ name: 'ENTRETENIMIENTO' })}> 
+              onPress={() => category_selected({ name: 'etertainment' })}> 
             <Text style={styles.buttonText}>ENTRETENIMIENTO</Text>
             </TouchableOpacity>
             <TouchableOpacity
             style={[styles.category,
-              context?.category_red === "DEPORTES" ? styles.red : null,
-              context?.category_green === "DEPORTES" ? styles.green : null,
-              context?.category_pink === "DEPORTES" ? styles.pink : null,
-              context?.category_blue === "DEPORTES" ? styles.blue : null,
-              context?.category_purple === "DEPORTES" ? styles.purple : null,
-              context?.category_yellow === "DEPORTES" ? styles.yellow : null,
+              context?.category_red === "sport" ? styles.red : null,
+              context?.category_green === "sport" ? styles.green : null,
+              context?.category_pink === "sport" ? styles.pink : null,
+              context?.category_blue === "sport" ? styles.blue : null,
+              context?.category_purple === "sport" ? styles.purple : null,
+              context?.category_yellow === "sport" ? styles.yellow : null,
               ]}
-              onPress={() => category_selected({ name: 'DEPORTES' })}> 
+              onPress={() => category_selected({ name: 'sport' })}> 
             <Text style={styles.buttonText}>DEPORTES</Text>
             </TouchableOpacity>
           </View>

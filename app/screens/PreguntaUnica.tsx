@@ -4,6 +4,9 @@ import { Slider } from '@react-native-assets/slider'
 import { MyContext } from '../modules/MyContext';
 import { useRoute } from '@react-navigation/native';
 import { useEvent } from 'react-native-reanimated';
+import findQuestion from '../components/takeQuestion';
+
+
 
 //declaraciones de los require de las imagenes apra los jugadores  y para los uesitos de colores
 const jugador1 = require('../../assets/images/astro_red.png');
@@ -29,7 +32,28 @@ const star_background = require('../../assets/images/tl.png');
 
 
 
+
 function PreguntaUnica({ route, navigation }) {
+  const [category, setCategory] = useState(null);
+  const [question, setQuestion] = useState(undefined);
+  const [answer, setAnswer] = useState(undefined);
+
+  const fetchQuestion = async () => {
+    setQuestion(undefined); // Set question to undefined while loading
+    try {
+      const questionBlock = await findQuestion({ category });
+      console.log('Hi mate!', questionBlock.question);
+      setQuestion(questionBlock ? questionBlock.question : "No question found.");
+      setAnswer(questionBlock ? questionBlock.answer : "No answer found.");
+    } catch (error) {
+      console.error("Error fetching question:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchQuestion(); // Call the async function
+  }, [category]);
+
   const { player, place, onGoBack } = route.params;
   const context = useContext(MyContext);
 
@@ -38,8 +62,6 @@ function PreguntaUnica({ route, navigation }) {
   const [isQuesito, setIsQuesito] = useState(false);
 
   let jugador;
-  let question = 'me cagoe en todo';
-  let answer = 'pues yo también';
   const [see_question, setSeeQuestion] = useState(true);
 
 
@@ -95,10 +117,6 @@ function PreguntaUnica({ route, navigation }) {
     jugador = jugador8;
   }
 
-  const takeQuestion = ({ color }) => {
-
-  }
-
   //comprobar quesito y color de este
   //if (place in [])
   //comprobar color
@@ -114,21 +132,28 @@ useEffect(() => {
   if ([5, 11, 16, 29, 42, 52, 63, 74, 85, 101].includes(place)){
     setColor('#f90a0a'); //red
     setPosition(0);
+    setCategory(context?.category_red);
+
   } else if ([7, 12, 18, 23, 36, 51, 62, 73, 84, 95].includes(place)){
     setColor('#37ee2e'); //green
     setPosition(1);
+    setCategory(context?.category_green);
   } else if ([14, 19, 26, 30, 1, 61, 72, 83, 94, 105].includes(place)){
     setColor('#ff00c6'); //pink
     setPosition(2);
+    setCategory(context?.category_pink);
   } else if ([2, 15, 28, 33, 39, 54, 65, 81, 92, 103].includes(place)){
     setColor('#00eaff'); //blue
     setPosition(3);
+    setCategory(context?.category_blue);
   } else if ([4, 9, 22, 35, 40, 53, 64, 75, 91, 102].includes(place)){
     setColor('#ba00ff'); //purple
     setPosition(4);
+    setCategory(context?.category_purple);
   } else {
     setColor('#fff600'); //yellow
     setPosition(5);
+    setCategory(context?.category_yellow);
   }
   console.log(color);
 
@@ -192,8 +217,8 @@ useEffect(() => {
           </View>
           <View style={[styles.questionBox, { borderColor: color }]}>
             {see_question ? 
-            <Text style={styles.text2}>{see_question}{question} KJHDFKJ HSDFKJHSDJKFHKLS JFHLKAH SFKDSAHF LKJHASDFI ULKJHSAULIFKJDHA LSUKJFHKAJ SFHL KJASDHFLKJ   ASHFLKJASHDKLFJ</Text>
-            : <Text style={styles.text2}>{answer} ESTO SERIA UNA RESPUESTA RESPUESTA RESPUESTA RESPUESTA RESPUESTA RESPUESTA</Text>}
+            <Text style={styles.text2}>{question ? question : 'Loading...'}</Text>
+            : <Text style={styles.text2}>{answer ? answer : 'Loading...'}</Text>}
             <TouchableOpacity style={styles.flipCard} onPress={handleFlip} activeOpacity={1}>
               <Image
               style={styles.stars}
@@ -202,7 +227,7 @@ useEffect(() => {
             </TouchableOpacity>
           </View>
           <View style={styles.midSmallContainer}>
-          <TouchableOpacity style={styles.extraOptions}>
+          <TouchableOpacity style={styles.extraOptions} onPress={fetchQuestion}>
               <Text style={styles.text1}>CAMBIAR PREGUNTA</Text>
             </TouchableOpacity>
           </View>
