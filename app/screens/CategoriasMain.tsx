@@ -60,7 +60,7 @@ function CategoriasMain({ navigation }) {
     console.log(cat_number)
     } else {
       setShowError(true);
-      errorMessage = 'NECESITAS SELECCIONAR 6 CATEGORIAS'
+      errorMessage = 'MUST SELECT 6 CATEGORIES'
 
     }
   }
@@ -68,22 +68,22 @@ function CategoriasMain({ navigation }) {
   return (
     <View style={styles.container}>
         <View style={styles.topContainer}>
-            <Text style={styles.buttonText}> ELIGE 6 CATEGORIAS </Text>
+            <Text style={styles.buttonText}> CHOOSE 6 CATEGORIES </Text>
         </View>
         <View style={styles.midContainer}>
             <View style={styles.buttonBox}>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CategoriasClasicas')}>
-                    <Text style={styles.buttonText}>CATEGORIAS CLASICAS</Text>
+                    <Text style={styles.buttonText}>CLASSIC CATEGORIES</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.buttonBox}>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CategoriasNuevas')}>
-                    <Text style={styles.buttonText}>NUEVAS CATEGORIAS</Text>
+                    <Text style={styles.buttonText}>NEW CATEGORIES</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.buttonBox}>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CategoriasAmigos')}>
-                    <Text style={styles.buttonText}>CONOCE A TUS AMIGOS</Text>
+                    <Text style={styles.buttonText}>FRIEND KNOWLEDGE</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -127,7 +127,7 @@ function CategoriasMain({ navigation }) {
                 </View>
             </View>
             <TouchableOpacity style={styles.playButton} onPress={() => handleJugar()}>
-                    <Text style={styles.buttonText}>JUGAR</Text>
+                    <Text style={styles.buttonText}>PLAY</Text>
             </TouchableOpacity>
         </View>
       {showError &&

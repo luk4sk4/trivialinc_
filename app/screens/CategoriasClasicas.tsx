@@ -93,7 +93,7 @@ function CategoriasClasicas({ navigation }) {
   return (
     <View style={styles.container}>
         <View style={styles.topContainer}>
-            <Text style={styles.buttonText}>CATEGORIAS CLASICAS</Text>
+            <Text style={styles.buttonText}>CLASSIC CATEGORIES</Text>
         </View>
         <View style={styles.midContainer}>
           <ScrollView>
@@ -108,7 +108,7 @@ function CategoriasClasicas({ navigation }) {
             context?.category_yellow === "history" ? styles.yellow : null,
             ]}
             onPress={() => category_selected({ name: 'history' })}> 
-            <Text style={styles.buttonText}>HISTORIA</Text>
+            <Text style={styles.buttonText}>HISTORY</Text>
             </TouchableOpacity>
             <TouchableOpacity
             style={[styles.category,
@@ -120,7 +120,7 @@ function CategoriasClasicas({ navigation }) {
               context?.category_yellow === "geography" ? styles.yellow : null,
               ]}
               onPress={() => category_selected({ name: 'geography' })}> 
-            <Text style={styles.buttonText}>GEOGRAFIA</Text>
+            <Text style={styles.buttonText}>GEOGRAPHY</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.rowBox}>
@@ -134,7 +134,7 @@ function CategoriasClasicas({ navigation }) {
               context?.category_yellow === "literature" ? styles.yellow : null,
               ]}
               onPress={() => category_selected({ name: 'literature' })}> 
-            <Text style={styles.buttonText}>ARTE Y LITERATURA</Text>
+            <Text style={styles.buttonText}>ART & LITERATURE</Text>
             </TouchableOpacity>
             <TouchableOpacity
             style={[styles.category,
@@ -146,7 +146,7 @@ function CategoriasClasicas({ navigation }) {
               context?.category_yellow === "science" ? styles.yellow : null,
               ]}
               onPress={() => category_selected({ name: 'science' })}> 
-            <Text style={styles.buttonText}>CIENCIA</Text>
+            <Text style={styles.buttonText}>SCIENCE</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.rowBox}>
@@ -160,7 +160,7 @@ function CategoriasClasicas({ navigation }) {
               context?.category_yellow === "etertainment" ? styles.yellow : null,
               ]}
               onPress={() => category_selected({ name: 'etertainment' })}> 
-            <Text style={styles.buttonText}>ENTRETENIMIENTO</Text>
+            <Text style={styles.buttonText}>ENTERTAINMENT</Text>
             </TouchableOpacity>
             <TouchableOpacity
             style={[styles.category,
@@ -172,7 +172,7 @@ function CategoriasClasicas({ navigation }) {
               context?.category_yellow === "sport" ? styles.yellow : null,
               ]}
               onPress={() => category_selected({ name: 'sport' })}> 
-            <Text style={styles.buttonText}>DEPORTES</Text>
+            <Text style={styles.buttonText}>SPORT</Text>
             </TouchableOpacity>
           </View>
           </ScrollView>
@@ -217,7 +217,7 @@ function CategoriasClasicas({ navigation }) {
                 </View>
             </View>
             <TouchableOpacity style={styles.playButton} onPress={() => navigation.navigate('CategoriasMain')}>
-                    <Text style={styles.buttonText}>ATRAS</Text>
+                    <Text style={styles.buttonText}>BACK</Text>
             </TouchableOpacity>
         </View>
     </View>

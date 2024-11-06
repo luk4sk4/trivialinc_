@@ -374,12 +374,12 @@ function Tablero({ navigation }) {
         {leyenda_pop_up ? 
         <View style={styles.midContainer}>
           <TouchableOpacity onPress={() => setLeyendaPopUp(false)}>
-          <Text style={[styles.leyendaText, {color:'#f90a0a'}]}>CATEGORÍA 1: {context?.category_red}</Text>
-          <Text style={[styles.leyendaText, {color:'#37ee2e'}]}>CATEGORÍA 2: {context?.category_green}</Text>
-          <Text style={[styles.leyendaText, {color:'#ff00c6'}]}>CATEGORÍA 3: {context?.category_pink}</Text>
-          <Text style={[styles.leyendaText, {color:'#00eaff'}]}>CATEGORÍA 4: {context?.category_blue}</Text>
-          <Text style={[styles.leyendaText, {color:'#ba00ff'}]}>CATEGORÍA 5: {context?.category_purple}</Text>
-          <Text style={[styles.leyendaText, {color:'#fff600'}]}>CATEGORÍA 6: {context?.category_yellow}</Text>
+          <Text style={[styles.leyendaText, {color:'#f90a0a'}]}>CATEGORY 1: {context?.category_red}</Text>
+          <Text style={[styles.leyendaText, {color:'#37ee2e'}]}>CATEGORY 2: {context?.category_green}</Text>
+          <Text style={[styles.leyendaText, {color:'#ff00c6'}]}>CATEGORY 3: {context?.category_pink}</Text>
+          <Text style={[styles.leyendaText, {color:'#00eaff'}]}>CATEGORY 4: {context?.category_blue}</Text>
+          <Text style={[styles.leyendaText, {color:'#ba00ff'}]}>CATEGORY 5: {context?.category_purple}</Text>
+          <Text style={[styles.leyendaText, {color:'#fff600'}]}>CATEGORY 6: {context?.category_yellow}</Text>
           </TouchableOpacity>
         </View>
         :
@@ -495,7 +495,7 @@ function Tablero({ navigation }) {
           {dice && 
             <View style={styles.dadoBox}>
             <TouchableOpacity style={styles.dadoThrow} onPress={HandleDice}>
-            {textoMolesto && (<Text style={styles.dadoThrowText}>LANZAR DADO</Text>)}
+            {textoMolesto && (<Text style={styles.dadoThrowText}>THROW DICE</Text>)}
             </TouchableOpacity>
               {dice2 && (
                 <>

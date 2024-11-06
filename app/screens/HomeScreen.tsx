@@ -7,13 +7,13 @@ function HomeScreen( { navigation } ) {
     <View style={styles.container}>
       
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Preguntas')}>
-        <Text style={styles.buttonText}>PREGUNTAS</Text>
+        <Text style={styles.buttonText}>QUESTIONS</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Jugar')}>
-        <Text style={styles.buttonText}>JUGAR</Text>
+        <Text style={styles.buttonText}>PLAY</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>AÑADIR</Text>
+        <Text style={styles.buttonText}>ADD</Text>
       </TouchableOpacity>
       <View style={styles.logoBox}>
         <Image style={styles.logo} source={ require('../../assets/images/TRIVIA.png') }

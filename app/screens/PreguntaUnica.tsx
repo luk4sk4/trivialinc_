@@ -206,7 +206,7 @@ useEffect(() => {
           </View>
         : null}
           <View style={styles.midSmallContainer}>
-            <Text style={styles.text1}>CATEGORIA: {}</Text>
+            <Text style={styles.text1}>CATEGORY: {}</Text>
           </View>
           <View style={[styles.questionBox, { borderColor: color }]}>
             {see_question ? 
@@ -221,7 +221,7 @@ useEffect(() => {
           </View>
           <View style={styles.midSmallContainer}>
           <TouchableOpacity style={styles.extraOptions} onPress={fetchQuestion}>
-              <Text style={styles.text1}>CAMBIAR PREGUNTA</Text>
+              <Text style={styles.text1}>CHANGE QUESTION</Text>
             </TouchableOpacity>
           </View>
         </View>

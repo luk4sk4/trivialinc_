@@ -50,7 +50,7 @@ function JugarScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.textbox}>
-      <Text style={styles.buttonText}>¿JUGADORES?</Text>
+      <Text style={styles.buttonText}>PLAYERS?</Text>
       </View>
       <View style={styles.imageBox}>
       <Image
@@ -77,7 +77,7 @@ function JugarScreen({ navigation }) {
       </View>
       </View>
       <TouchableOpacity style={styles.button} onPress={handleNextPress}>
-        <Text style={styles.buttonText}>SIGUIENTE</Text>
+        <Text style={styles.buttonText}>NEXT</Text>
       </TouchableOpacity>
     </View>
   );
