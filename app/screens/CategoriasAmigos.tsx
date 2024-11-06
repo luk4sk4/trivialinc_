@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView, Touchable } from 'react-native';
-import { MyContext } from '../modules/MyContext';
+import { View, Text, StyleSheet, TouchableOpacity, } from 'react-native';
+
 
 function CategoriasAmigos({ navigation }) {
   return (

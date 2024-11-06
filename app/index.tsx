@@ -1,7 +1,7 @@
 //necesidades
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 

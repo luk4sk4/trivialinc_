@@ -1,14 +1,15 @@
-import React, { useState, useContext  } from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, { useState, useContext, useEffect  } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { MyContext } from '../modules/MyContext';
 
-const white = require('../../assets/images/tl.png');
-const red = require('../../assets/images/rojo.png');
-const green = require('../../assets/images/verde.png');
-const pink = require('../../assets/images/rosa.png');
-const blue = require('../../assets/images/azul.png');
-const purple = require('../../assets/images/morado.png');
-const yellow = require('../../assets/images/amarillo.png');
+
+const white = require('../../assets/images/star_white.png');
+const red = require('../../assets/images/star_red.png');
+const green = require('../../assets/images/star_green.png');
+const pink = require('../../assets/images/star_pink.png');
+const blue = require('../../assets/images/star_blue.png');
+const purple = require('../../assets/images/star_purple.png');
+const yellow = require('../../assets/images/star_yellow.png');
 
 
 function CategoriasClasicas({ navigation }) {
@@ -64,8 +65,6 @@ function CategoriasClasicas({ navigation }) {
     else {
       if (!context?.category_red) {
         context?.setCategoryRed(name);
-        console.log('DONE')
-        console.log(context?.category_red)
       }
       else if (!context?.category_green) {
         context?.setCategoryGreen(name);
@@ -83,7 +82,7 @@ function CategoriasClasicas({ navigation }) {
         context?.setCategoryYellow(name);
       }
       else {
-        console.log('ERROR')
+        console.log('ERROR WITH SET CATEGORY')
       }
     }
   };
@@ -160,7 +159,7 @@ function CategoriasClasicas({ navigation }) {
               context?.category_yellow === "etertainment" ? styles.yellow : null,
               ]}
               onPress={() => category_selected({ name: 'etertainment' })}> 
-            <Text style={styles.buttonText}>ENTERTAINMENT</Text>
+            <Text style={styles.buttonText}>ENTER- TAINMENT</Text>
             </TouchableOpacity>
             <TouchableOpacity
             style={[styles.category,
@@ -312,6 +311,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         fontFamily: 'TTLAKES',  //tengo que buscar como usar la custom font sin gastaar muchos recursos
+        flexWrap: 'wrap',
+
     },
     circlesContainer: {
         width: 350,

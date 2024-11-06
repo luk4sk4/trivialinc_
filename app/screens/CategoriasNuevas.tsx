@@ -1,14 +1,15 @@
-import React, { useState, useContext  } from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, { useContext  } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { MyContext } from '../modules/MyContext';
 
-const white = require('../../assets/images/tl.png');
-const red = require('../../assets/images/rojo.png');
-const green = require('../../assets/images/verde.png');
-const pink = require('../../assets/images/rosa.png');
-const blue = require('../../assets/images/azul.png');
-const purple = require('../../assets/images/morado.png');
-const yellow = require('../../assets/images/amarillo.png');
+
+const white = require('../../assets/images/star_white.png');
+const red = require('../../assets/images/star_red.png');
+const green = require('../../assets/images/star_green.png');
+const pink = require('../../assets/images/star_pink.png');
+const blue = require('../../assets/images/star_blue.png');
+const purple = require('../../assets/images/star_purple.png');
+const yellow = require('../../assets/images/star_yellow.png');
 
 
 function CategoriasNuevas({ navigation }) {

@@ -5,24 +5,25 @@ import findQuestion from '../components/takeQuestion';
 
 
 
+
 //declaraciones de los require de las imagenes apra los jugadores  y para los uesitos de colores
-const jugador1 = require('../../assets/images/astro_red.png');
-const jugador2 = require('../../assets/images/astro_green.png');
-const jugador3 = require('../../assets/images/astro_pink.png');
-const jugador4 = require('../../assets/images/astro_blue.png');
-const jugador5 = require('../../assets/images/astro_purple.png');
-const jugador6 = require('../../assets/images/astro_yellow.png');
-const jugador7 = require('../../assets/images/astro_white.png');
-const jugador8 = require('../../assets/images/astro_brown.png');
+const player1 = require('../../assets/images/astro_red.png');
+const player2 = require('../../assets/images/astro_green.png');
+const player3 = require('../../assets/images/astro_pink.png');
+const player4 = require('../../assets/images/astro_blue.png');
+const player5 = require('../../assets/images/astro_purple.png');
+const player6 = require('../../assets/images/astro_yellow.png');
+const player7 = require('../../assets/images/astro_white.png');
+const player8 = require('../../assets/images/astro_brown.png');
 
-const star_red = require('../../assets/images/rojo.png');
-const star_green = require('../../assets/images/verde.png');
-const star_pink = require('../../assets/images/rosa.png');
-const star_blue = require('../../assets/images/azul.png');
-const star_purple = require('../../assets/images/morado.png');
-const star_yellow = require('../../assets/images/amarillo.png');
+const star_red = require('../../assets/images/star_red.png');
+const star_green = require('../../assets/images/star_green.png');
+const star_pink = require('../../assets/images/star_pink.png');
+const star_blue = require('../../assets/images/star_blue.png');
+const star_purple = require('../../assets/images/star_purple.png');
+const star_yellow = require('../../assets/images/star_yellow.png');
 
-const star_background = require('../../assets/images/tl.png');
+const star_background = require('../../assets/images/star_white.png');
 
 
 
@@ -39,7 +40,6 @@ function PreguntaUnica({ route, navigation }) {
     setQuestion(undefined); 
     try {
       const questionBlock = await findQuestion({ category });
-      console.log('Hi mate!', questionBlock.question);
       setQuestion(questionBlock ? questionBlock.question : "No question found.");
       setAnswer(questionBlock ? questionBlock.answer : "No answer found.");
     } catch (error) {
@@ -58,7 +58,7 @@ function PreguntaUnica({ route, navigation }) {
   const [position, setPosition] = useState(0);
   const [isQuesito, setIsQuesito] = useState(false);
 
-  let jugador;
+  let player_image;
   const [see_question, setSeeQuestion] = useState(true);
 
 
@@ -84,34 +84,33 @@ function PreguntaUnica({ route, navigation }) {
 
   const handleFlip = () => {
     setSeeQuestion(prevSeeQuestion => !prevSeeQuestion);
-    console.log(!see_question);
   };
 
   let quesitos;
   if (player == 1){
     quesitos = context?.quesitos_one;
-    jugador = jugador1;
+    player_image = player1;
   } else if (player == 2){
     quesitos = context?.quesitos_two;
-    jugador = jugador2;
+    player_image = player2;
   } else if (player == 3){
     quesitos = context?.quesitos_three;
-    jugador = jugador3;
+    player_image = player3;
   } else if (player == 4){
     quesitos = context?.quesitos_four;
-    jugador = jugador4;
+    player_image = player4;
   } else if (player == 5){
     quesitos = context?.quesitos_five;
-    jugador = jugador5;
+    player_image = player5;
   } else if (player == 6){
     quesitos = context?.quesitos_six;
-    jugador = jugador6;
+    player_image = player6;
   } else if (player == 7){
     quesitos = context?.quesitos_seven;
-    jugador = jugador7;
+    player_image = player7;
   } else {
     quesitos = context?.quesitos_eight;
-    jugador = jugador8;
+    player_image = player8;
   }
 
 useEffect(() => {
@@ -148,7 +147,6 @@ useEffect(() => {
     setPosition(5);
     setCategory(context?.category_yellow);
   }
-  console.log(color);
 
 },[place]);
 
@@ -159,7 +157,9 @@ useEffect(() => {
           <View style={styles.astronautBox}>
             <Image
               style={styles.astro}
-              source={jugador}/>
+              source={player_image}/>
+
+              <Text style={styles.text1}>Player {player}</Text>
           </View>
           {quesitos[0] === 1 ? (
           <Image

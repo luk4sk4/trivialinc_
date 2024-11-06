@@ -1,31 +1,32 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView, Touchable } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, } from 'react-native';
 import { MyContext } from '../modules/MyContext';
 
-const asteroideRojo = require('../../assets/images/asteroid_red.png')
-const asteroideVerde = require('../../assets/images/asteroid_green.png')
-const asteroideRosa = require('../../assets/images/asteroid_pink.png')
-const asteroideAzul = require('../../assets/images/asteroid_blue.png')
-const asteroideMorado = require('../../assets/images/asteroid_purple.png')
-const asteroideAmarillo = require('../../assets/images/asteroid_yellow.png')
 
-const planetaRojo = require('../../assets/images/planet_red.png')
-const planetaVerde = require('../../assets/images/planet_green.png')
-const planetaRosa = require('../../assets/images/planet_pink.png')
-const planetaAzul = require('../../assets/images/planet_blue.png')
-const planetaMorado = require('../../assets/images/planet_purple.png')
-const planetaAmarillo = require('../../assets/images/planet_yellow.png')
+const redAsteroid = require('../../assets/images/asteroid_red.png')
+const greenAsteroid = require('../../assets/images/asteroid_green.png')
+const pinkAsteroid = require('../../assets/images/asteroid_pink.png')
+const blueAsteroid = require('../../assets/images/asteroid_blue.png')
+const purpleAsteroid = require('../../assets/images/asteroid_purple.png')
+const yellowAsteroid = require('../../assets/images/asteroid_yellow.png')
+
+const redPlanet = require('../../assets/images/planet_red.png')
+const greenPlanet = require('../../assets/images/planet_green.png')
+const pinkPlanet = require('../../assets/images/planet_pink.png')
+const bluePlanet = require('../../assets/images/planet_blue.png')
+const purplePlanet = require('../../assets/images/planet_purple.png')
+const yellowPlanet = require('../../assets/images/planet_yellow.png')
 
 
 const satellite = require('../../assets/images/satellite.png')
 const rocket = require('../../assets/images/rocket.png')
 
-const star_red = require('../../assets/images/rojo.png');
-const star_green = require('../../assets/images/verde.png');
-const star_pink = require('../../assets/images/rosa.png');
-const star_blue = require('../../assets/images/azul.png');
-const star_purple = require('../../assets/images/morado.png');
-const star_yellow = require('../../assets/images/amarillo.png');
+const star_red = require('../../assets/images/star_red.png');
+const star_green = require('../../assets/images/star_green.png');
+const star_pink = require('../../assets/images/star_pink.png');
+const star_blue = require('../../assets/images/star_blue.png');
+const star_purple = require('../../assets/images/star_purple.png');
+const star_yellow = require('../../assets/images/star_yellow.png');
 
 function Tablero({ navigation }) {
 
@@ -52,7 +53,7 @@ function Tablero({ navigation }) {
   const [dice2, setDice2] = useState(false);
   const [dice3, setDice3] = useState(false);
   const [dice4, setDice4] = useState(true);
-  const [textoMolesto, setTextoMolesto] = useState(true);
+  const [annoyingText, setAnnoyingText] = useState(true);
   const [diceNumber, setDiceNumber] = useState(0);
 
   const [position1, setPosition1] = useState(1000);
@@ -64,7 +65,7 @@ function Tablero({ navigation }) {
   const [position7, setPosition7] = useState(1000);
   const [position8, setPosition8] = useState(1000);
 
-  const [opcionesMovimiento, setOpcionesMovimiento] = useState([]);
+  const [movementOptions, setMovementOptions] = useState([]);
   //cordendas
   const [red_cords, setRed_cords] = useState([155, 155]);
   const [green_cords, setGreen_cords] = useState([155, 155]);
@@ -96,89 +97,88 @@ function Tablero({ navigation }) {
     else if (main_position > 50 && main_position < 1000){result = HandleVerticalMovement(diceResult, main_position)}
     else if (main_position == 1000){result = HandleTopMovement(diceResult, 0)}
     
-    setOpcionesMovimiento(result)
+    setMovementOptions(result)
   }
 
   const HandleCircleMovement = ({diceResult, main_position, check}) => {
     let movimientos = diceResult
     
-    let posibilidades = []
+    let possibilities = []
     
-    let posicion_temporalA = main_position
-    let posicion_temporalB = main_position
+    let temporal_positionA = main_position
+    let temporal_positionB = main_position
 
     while (movimientos > 0){
       if (check === true && movimientos >= 1) {
-        if (posicion_temporalA == 1 || posicion_temporalA == 8 || posicion_temporalA == 15 || posicion_temporalA == 22 || posicion_temporalA == 29 || posicion_temporalA == 36){
-          let temp_posiblidad = HandleCheckBaby(posicion_temporalA, movimientos)
-          posibilidades.push(temp_posiblidad)
+        if (temporal_positionA == 1 || temporal_positionA == 8 || temporal_positionA == 15 || temporal_positionA == 22 || temporal_positionA == 29 || temporal_positionA == 36){
+          let temp_posiblidad = HandleCheckBaby(temporal_positionA, movimientos)
+          possibilities.push(temp_posiblidad)
         }
-        if (posicion_temporalB == 1 || posicion_temporalB == 8 || posicion_temporalB == 15 || posicion_temporalB == 22 || posicion_temporalB == 29 || posicion_temporalB == 36){
-          let temp_posiblidad = HandleCheckBaby(posicion_temporalB, movimientos)
-          posibilidades.push(temp_posiblidad)
+        if (temporal_positionB == 1 || temporal_positionB == 8 || temporal_positionB == 15 || temporal_positionB == 22 || temporal_positionB == 29 || temporal_positionB == 36){
+          let temp_posiblidad = HandleCheckBaby(temporal_positionB, movimientos)
+          possibilities.push(temp_posiblidad)
         }
       }
       movimientos -= 1
-      posicion_temporalA += 1
-      posicion_temporalB -= 1
+      temporal_positionA += 1
+      temporal_positionB -= 1
     }
 
-    if (posicion_temporalA > 42){
-      posicion_temporalA -= 42
+    if (temporal_positionA > 42){
+      temporal_positionA -= 42
     }
-    if (posicion_temporalB < 1){
-      posicion_temporalB += 42
+    if (temporal_positionB < 1){
+      temporal_positionB += 42
     }
 
-    posibilidades.push(posicion_temporalA)
-    posibilidades.push(posicion_temporalB)
-    console.log('posiblidades;', posibilidades)
+    possibilities.push(temporal_positionA)
+    possibilities.push(temporal_positionB)
 
 
-    return posibilidades
+    return possibilities
   }
 
-  const HandleCheckBaby = (positionCheck, movimientos_restantes) => {
-    let casilla
+  const HandleCheckBaby = (positionCheck, movements_left) => {
+    let square
     if (positionCheck === 1) {
-      casilla = 50 + movimientos_restantes;
-      if (casilla === 56) {
-        casilla = 1000;
+      square = 50 + movements_left;
+      if (square === 56) {
+        square = 1000;
       }
     } else if (positionCheck === 8) {
-      casilla = 60 + movimientos_restantes;
-      if (casilla === 66) {
-        casilla = 1000;
+      square = 60 + movements_left;
+      if (square === 66) {
+        square = 1000;
       }
     } else if (positionCheck === 15) {
-      casilla = 70 + movimientos_restantes;
-      if (casilla === 76) {
-        casilla = 1000;
+      square = 70 + movements_left;
+      if (square === 76) {
+        square = 1000;
       }
     } else if (positionCheck === 22) {
-      casilla = 80 + movimientos_restantes;
-      if (casilla === 86) {
-        casilla = 1000;
+      square = 80 + movements_left;
+      if (square === 86) {
+        square = 1000;
       }
     } else if (positionCheck === 29) {
-      casilla = 90 + movimientos_restantes;
-      if (casilla === 96) {
-        casilla = 1000;
+      square = 90 + movements_left;
+      if (square === 96) {
+        square = 1000;
       }
     } else if (positionCheck === 36) {
-      casilla = 100 + movimientos_restantes;
-      if (casilla === 106) {
-        casilla = 1000;
+      square = 100 + movements_left;
+      if (square === 106) {
+        square = 1000;
       }
     }
-    return casilla
+    return square
   }
  
 
   const HandleVerticalMovement = (diceResult, main_position) => {
-    let posicion_temporalA = main_position + diceResult
-    let posicion_temporalB = main_position - diceResult
-    let posibilidades = []
+    let temporal_positionA = main_position + diceResult
+    let temporal_positionB = main_position - diceResult
+    let possibilities = []
     
     let low_number
     let top_number
@@ -217,80 +217,79 @@ function Tablero({ navigation }) {
       planet_number = 36
     }
 
-    if (posicion_temporalA == top_number){
-      posibilidades.push(1000)
-    } else if (posicion_temporalA > top_number){
-      let movimientos = posicion_temporalA - top_number
-      posibilidades = [...posibilidades, ...HandleTopMovement(movimientos, except_number)];
+    if (temporal_positionA == top_number){
+      possibilities.push(1000)
+    } else if (temporal_positionA > top_number){
+      let movimientos = temporal_positionA - top_number
+      possibilities = [...possibilities, ...HandleTopMovement(movimientos, except_number)];
     } else {
-      posibilidades.push(posicion_temporalA)
+      possibilities.push(temporal_positionA)
     }
-    if (posicion_temporalB == low_number){
-      posibilidades.push(planet_number)
-    } else if (posicion_temporalB < low_number){
-      let movimientos = low_number - posicion_temporalB
-      posicion_temporalB = planet_number
-      posibilidades = [...posibilidades, ...HandleCircleMovement({ diceResult: movimientos, main_position: posicion_temporalB, check: false })];
+    if (temporal_positionB == low_number){
+      possibilities.push(planet_number)
+    } else if (temporal_positionB < low_number){
+      let movimientos = low_number - temporal_positionB
+      temporal_positionB = planet_number
+      possibilities = [...possibilities, ...HandleCircleMovement({ diceResult: movimientos, main_position: temporal_positionB, check: false })];
     } else {
-      posibilidades.push(posicion_temporalB)
+      possibilities.push(temporal_positionB)
     }
 
 
-    return posibilidades
+    return possibilities
   }
 
   const HandleTopMovement = (diceResult, except) => {
-    let posibilidades = []
-    let op_A = 56 - diceResult; if (op_A == 50){op_A = 1}; if (except != 1) {posibilidades.push(op_A)}
-    let op_B = 66 - diceResult; if (op_B == 60){op_B = 8}; if (except != 2) {posibilidades.push(op_B)}
-    let op_C = 76 - diceResult; if (op_C == 70){op_C = 15}; if (except != 3) {posibilidades.push(op_C)}
-    let op_D = 86 - diceResult; if (op_D == 80){op_D = 22}; if (except != 4) {posibilidades.push(op_D)}
-    let op_E = 96 - diceResult; if (op_E == 90){op_E = 29}; if (except != 5) {posibilidades.push(op_E)}
-    let op_F = 106 - diceResult; if (op_F == 100){op_F = 36}; if (except != 6) {posibilidades.push(op_F)}
-    return posibilidades
+    let possibilities = []
+    let op_A = 56 - diceResult; if (op_A == 50){op_A = 1}; if (except != 1) {possibilities.push(op_A)}
+    let op_B = 66 - diceResult; if (op_B == 60){op_B = 8}; if (except != 2) {possibilities.push(op_B)}
+    let op_C = 76 - diceResult; if (op_C == 70){op_C = 15}; if (except != 3) {possibilities.push(op_C)}
+    let op_D = 86 - diceResult; if (op_D == 80){op_D = 22}; if (except != 4) {possibilities.push(op_D)}
+    let op_E = 96 - diceResult; if (op_E == 90){op_E = 29}; if (except != 5) {possibilities.push(op_E)}
+    let op_F = 106 - diceResult; if (op_F == 100){op_F = 36}; if (except != 6) {possibilities.push(op_F)}
+    return possibilities
   }
 
   const HandleTeleport = (value, cordY, cordX) => {
-    console.log(turn, value, cordY, cordX)
     if (turn == 1) {
       setRed_cords([cordY, cordX]);
       setPosition1(value);
-      setOpcionesMovimiento([]);
+      setMovementOptions([]);
     }
     else if (turn == 2) {
       setGreen_cords([cordY, cordX]);
       setPosition2(value);
-      setOpcionesMovimiento([]);
+      setMovementOptions([]);
     }
     else if (turn == 3) {
       setPink_cords([cordY, cordX])
       setPosition3(value)
-      setOpcionesMovimiento([])
+      setMovementOptions([])
     }
     else if (turn == 4) {
       setBlue_cords([cordY, cordX])
       setPosition4(value)
-      setOpcionesMovimiento([])
+      setMovementOptions([])
     }
     else if (turn == 5) {
       setPurple_cords([cordY, cordX])
       setPosition5(value)
-      setOpcionesMovimiento([])
+      setMovementOptions([])
     }
     else if (turn == 6) {
       setYellow_cords([cordY, cordX])
       setPosition6(value)
-      setOpcionesMovimiento([])
+      setMovementOptions([])
     }
     else if (turn == 7) {
       setWhite_cords([cordY, cordX])
       setPosition7(value)
-      setOpcionesMovimiento([])
+      setMovementOptions([])
     }
     else if (turn == 8) {
       setBrown_cords([cordY, cordX])
       setPosition8(value)
-      setOpcionesMovimiento([])
+      setMovementOptions([])
     }
     if ([3, 6, 10, 13, 17, 20, 24, 27, 31, 34, 38, 41].includes(value)){
       setDice4(false)
@@ -302,7 +301,7 @@ function Tablero({ navigation }) {
   }
 
   const HandleDice = async () => {
-    setTextoMolesto(false)
+    setAnnoyingText(false)
     const randomDice = Math.floor(Math.random() * 6) + 1;
     setDiceNumber(randomDice);
     setDice2(true)
@@ -310,9 +309,8 @@ function Tablero({ navigation }) {
     setDice2(false)
     setDice3(true)
     await delay(1500)
-    console.log('lol')
     setDice3(false)
-    setTextoMolesto(true)
+    setAnnoyingText(true)
     setDice(false)
     setDice4(true)
     HandleMovement({ diceResult: randomDice} )
@@ -321,13 +319,11 @@ function Tablero({ navigation }) {
 
   const HandleNextTurn = () => {
     if (context?.number_of_players > 1){
-    console.log('previous_turn: ', turn)
     if (context?.number_of_players > turn){
       setTurn(turn+1)
     } else {
       setTurn(1)
-    }
-    console.log('actual_turn: ', turn)}
+    }}
     else {
       setDice4(false)
       setDice(true)
@@ -337,7 +333,6 @@ function Tablero({ navigation }) {
   useEffect(() => {
     setDice4(false)
     setDice(true)
-    console.log('turno tras effect:', turn)
   }, [turn]); 
 
   return (
@@ -397,91 +392,91 @@ function Tablero({ navigation }) {
           <Text style={[styles.playerText, {color: 'white'}]}>TURN OF PLAYER {turn}</Text>
           <View style={[styles.mapBox]}>
 
-          <TouchableOpacity style={[styles.planetBox, {top: 0, left: 75}, opcionesMovimiento.includes(1) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(1) ? () => HandleTeleport(1, 0, 75, "pink", "si") : null}><Image source={planetaRosa} style={styles.planet}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 2, left: 104}, opcionesMovimiento.includes(2) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(2) ? () => HandleTeleport(2, 2, 104, "blue", "no") : null}><Image source={asteroideAzul} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 5, left: 128}, opcionesMovimiento.includes(3) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(3) ? () => HandleTeleport(3, 5, 128, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 6, left: 153}, opcionesMovimiento.includes(4) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(4) ? () => HandleTeleport(4, 6, 153, "purple", "no") : null}><Image source={asteroideMorado} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 2, right: 153}, opcionesMovimiento.includes(5) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(5) ? () => HandleTeleport(5, 6, 340-153, "red", "no") : null}><Image source={asteroideRojo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 1, right: 128}, opcionesMovimiento.includes(6) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(6) ? () => HandleTeleport(6, 1, 340-128, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 0, right: 104}, opcionesMovimiento.includes(7) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(7) ? () => HandleTeleport(7, 0, 340-104, "green", "no") : null}><Image source={asteroideVerde} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.planetBox, {top: 0, left: 75}, movementOptions.includes(1) ? styles.is_option : null]} onPress={movementOptions.includes(1) ? () => HandleTeleport(1, 0, 75, "pink", "si") : null}><Image source={pinkPlanet} style={styles.planet}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 2, left: 104}, movementOptions.includes(2) ? styles.is_option : null]} onPress={movementOptions.includes(2) ? () => HandleTeleport(2, 2, 104, "blue", "no") : null}><Image source={blueAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 5, left: 128}, movementOptions.includes(3) ? styles.is_option : null]} onPress={movementOptions.includes(3) ? () => HandleTeleport(3, 5, 128, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 6, left: 153}, movementOptions.includes(4) ? styles.is_option : null]} onPress={movementOptions.includes(4) ? () => HandleTeleport(4, 6, 153, "purple", "no") : null}><Image source={purpleAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 2, right: 153}, movementOptions.includes(5) ? styles.is_option : null]} onPress={movementOptions.includes(5) ? () => HandleTeleport(5, 6, 340-153, "red", "no") : null}><Image source={redAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 1, right: 128}, movementOptions.includes(6) ? styles.is_option : null]} onPress={movementOptions.includes(6) ? () => HandleTeleport(6, 1, 340-128, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 0, right: 104}, movementOptions.includes(7) ? styles.is_option : null]} onPress={movementOptions.includes(7) ? () => HandleTeleport(7, 0, 340-104, "green", "no") : null}><Image source={greenAsteroid} style={styles.asteroid}/></TouchableOpacity>
           
-          <TouchableOpacity style={[styles.planetBox, {top: 0, right: 75}, opcionesMovimiento.includes(8) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(8) ? () => HandleTeleport(8, 0, 340-75, "yellow", "si") : null}><Image source={planetaAmarillo} style={styles.planet}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 10, right: 50}, opcionesMovimiento.includes(9) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(9) ? () => HandleTeleport(9, 10, 340-50, "purple", "no") : null}><Image source={asteroideMorado} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 35, right: 40}, opcionesMovimiento.includes(10) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(10) ? () => HandleTeleport(10, 35, 340-40, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 60, right: 35}, opcionesMovimiento.includes(11) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(11) ? () => HandleTeleport(11, 60, 340-35, "red", "no") : null}><Image source={asteroideRojo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 245, right: 25}, opcionesMovimiento.includes(12) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(12) ? () => HandleTeleport(12, 340-245, 340-25, "green", "no") : null}><Image source={asteroideVerde} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 220, right: 18}, opcionesMovimiento.includes(13) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(13) ? () => HandleTeleport(13, 340-220, 340-18, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 195, right: 10}, opcionesMovimiento.includes(14) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(14) ? () => HandleTeleport(14, 340-195, 340-10, "pink", "no") : null}><Image source={asteroideRosa} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.planetBox, {top: 0, right: 75}, movementOptions.includes(8) ? styles.is_option : null]} onPress={movementOptions.includes(8) ? () => HandleTeleport(8, 0, 340-75, "yellow", "si") : null}><Image source={yellowPlanet} style={styles.planet}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 10, right: 50}, movementOptions.includes(9) ? styles.is_option : null]} onPress={movementOptions.includes(9) ? () => HandleTeleport(9, 10, 340-50, "purple", "no") : null}><Image source={purpleAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 35, right: 40}, movementOptions.includes(10) ? styles.is_option : null]} onPress={movementOptions.includes(10) ? () => HandleTeleport(10, 35, 340-40, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 60, right: 35}, movementOptions.includes(11) ? styles.is_option : null]} onPress={movementOptions.includes(11) ? () => HandleTeleport(11, 60, 340-35, "red", "no") : null}><Image source={redAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 245, right: 25}, movementOptions.includes(12) ? styles.is_option : null]} onPress={movementOptions.includes(12) ? () => HandleTeleport(12, 340-245, 340-25, "green", "no") : null}><Image source={greenAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 220, right: 18}, movementOptions.includes(13) ? styles.is_option : null]} onPress={movementOptions.includes(13) ? () => HandleTeleport(13, 340-220, 340-18, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 195, right: 10}, movementOptions.includes(14) ? styles.is_option : null]} onPress={movementOptions.includes(14) ? () => HandleTeleport(14, 340-195, 340-10, "pink", "no") : null}><Image source={pinkAsteroid} style={styles.asteroid}/></TouchableOpacity>
           
-          <TouchableOpacity style={[styles.planetBox, {top: 160, right: 0}, opcionesMovimiento.includes(15) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(15) ? () => HandleTeleport(15, 160, 340, "blue", "si") : null}><Image source={planetaAzul} style={styles.planet}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 190, right: 10}, opcionesMovimiento.includes(16) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(16) ? () => HandleTeleport(16, 190, 340-10, "red", "no") : null}><Image source={asteroideRojo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 215, right: 18}, opcionesMovimiento.includes(17) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(17) ? () => HandleTeleport(17, 215, 340-18, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 240, right: 25}, opcionesMovimiento.includes(18) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(18) ? () => HandleTeleport(18, 240, 340-25, "green", "no") : null}><Image source={asteroideVerde} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 65, right: 35}, opcionesMovimiento.includes(19) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(19) ? () => HandleTeleport(19, 340-65, 340-35, "pink", "no") : null}><Image source={asteroideRosa} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 40, right: 40}, opcionesMovimiento.includes(20) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(20) ? () => HandleTeleport(20, 340-40, 340-18, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 15, right: 50}, opcionesMovimiento.includes(21) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(21) ? () => HandleTeleport(21, 340-15, 340-50, "yellow", "no") : null}><Image source={asteroideAmarillo} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.planetBox, {top: 160, right: 0}, movementOptions.includes(15) ? styles.is_option : null]} onPress={movementOptions.includes(15) ? () => HandleTeleport(15, 160, 340, "blue", "si") : null}><Image source={bluePlanet} style={styles.planet}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 190, right: 10}, movementOptions.includes(16) ? styles.is_option : null]} onPress={movementOptions.includes(16) ? () => HandleTeleport(16, 190, 340-10, "red", "no") : null}><Image source={redAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 215, right: 18}, movementOptions.includes(17) ? styles.is_option : null]} onPress={movementOptions.includes(17) ? () => HandleTeleport(17, 215, 340-18, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 240, right: 25}, movementOptions.includes(18) ? styles.is_option : null]} onPress={movementOptions.includes(18) ? () => HandleTeleport(18, 240, 340-25, "green", "no") : null}><Image source={greenAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 65, right: 35}, movementOptions.includes(19) ? styles.is_option : null]} onPress={movementOptions.includes(19) ? () => HandleTeleport(19, 340-65, 340-35, "pink", "no") : null}><Image source={pinkAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 40, right: 40}, movementOptions.includes(20) ? styles.is_option : null]} onPress={movementOptions.includes(20) ? () => HandleTeleport(20, 340-40, 340-18, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 15, right: 50}, movementOptions.includes(21) ? styles.is_option : null]} onPress={movementOptions.includes(21) ? () => HandleTeleport(21, 340-15, 340-50, "yellow", "no") : null}><Image source={yellowAsteroid} style={styles.asteroid}/></TouchableOpacity>
           
-          <TouchableOpacity style={[styles.planetBox, {bottom: 0, left: 250}, opcionesMovimiento.includes(22) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(22) ? () => HandleTeleport(22, 340, 250, "purple", "si") : null}><Image source={planetaMorado} style={styles.planet}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 5, right: 104}, opcionesMovimiento.includes(23) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(23) ? () => HandleTeleport(23, 340-5, 340-104, "green", "no") : null}><Image source={asteroideVerde} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 5, right: 128}, opcionesMovimiento.includes(24) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(24) ? () => HandleTeleport(24, 340-5, 340-128, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 1, left: 153}, opcionesMovimiento.includes(25) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(25) ? () => HandleTeleport(25, 340-1, 153, "pink", "no") : null}><Image source={asteroideRosa} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 3, right: 153}, opcionesMovimiento.includes(26) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(26) ? () => HandleTeleport(26, 340-1, 340-153, "yellow", "no") : null}><Image source={asteroideAmarillo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 3, left: 128}, opcionesMovimiento.includes(27) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(27) ? () => HandleTeleport(27, 340-3, 128, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 5, left: 104}, opcionesMovimiento.includes(28) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(28) ? () => HandleTeleport(28, 340-5, 104, "blue", "no") : null}><Image source={asteroideAzul} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.planetBox, {bottom: 0, left: 250}, movementOptions.includes(22) ? styles.is_option : null]} onPress={movementOptions.includes(22) ? () => HandleTeleport(22, 340, 250, "purple", "si") : null}><Image source={purplePlanet} style={styles.planet}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 5, right: 104}, movementOptions.includes(23) ? styles.is_option : null]} onPress={movementOptions.includes(23) ? () => HandleTeleport(23, 340-5, 340-104, "green", "no") : null}><Image source={greenAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 5, right: 128}, movementOptions.includes(24) ? styles.is_option : null]} onPress={movementOptions.includes(24) ? () => HandleTeleport(24, 340-5, 340-128, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 1, left: 153}, movementOptions.includes(25) ? styles.is_option : null]} onPress={movementOptions.includes(25) ? () => HandleTeleport(25, 340-1, 153, "pink", "no") : null}><Image source={pinkAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 3, right: 153}, movementOptions.includes(26) ? styles.is_option : null]} onPress={movementOptions.includes(26) ? () => HandleTeleport(26, 340-1, 340-153, "yellow", "no") : null}><Image source={yellowAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 3, left: 128}, movementOptions.includes(27) ? styles.is_option : null]} onPress={movementOptions.includes(27) ? () => HandleTeleport(27, 340-3, 128, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 5, left: 104}, movementOptions.includes(28) ? styles.is_option : null]} onPress={movementOptions.includes(28) ? () => HandleTeleport(28, 340-5, 104, "blue", "no") : null}><Image source={blueAsteroid} style={styles.asteroid}/></TouchableOpacity>
           
-          <TouchableOpacity style={[styles.planetBox, {bottom: 0, left: 75}, opcionesMovimiento.includes(29) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(29) ? () => HandleTeleport(29, 340, 75, "red", "si") : null}><Image source={planetaRojo} style={styles.planet}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 15, left: 50}, opcionesMovimiento.includes(30) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(30) ? () => HandleTeleport(30, 340-15, 50, "pink", "no") : null}><Image source={asteroideRosa} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 40, left: 40}, opcionesMovimiento.includes(31) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(31) ? () => HandleTeleport(31, 340-40, 40, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 65, left: 35}, opcionesMovimiento.includes(32) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(32) ? () => HandleTeleport(32, 340-65, 35, "yellow", "no") : null}><Image source={asteroideAmarillo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 240, left: 25}, opcionesMovimiento.includes(33) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(33) ? () => HandleTeleport(33, 240, 25, "blue", "no") : null}><Image source={asteroideAzul} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 215, left: 18}, opcionesMovimiento.includes(34) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(34) ? () => HandleTeleport(34, 215, 18, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 190, left: 10}, opcionesMovimiento.includes(35) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(35) ? () => HandleTeleport(35, 190, 10, "purple", "no") : null}><Image source={asteroideMorado} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.planetBox, {bottom: 0, left: 75}, movementOptions.includes(29) ? styles.is_option : null]} onPress={movementOptions.includes(29) ? () => HandleTeleport(29, 340, 75, "red", "si") : null}><Image source={redPlanet} style={styles.planet}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 15, left: 50}, movementOptions.includes(30) ? styles.is_option : null]} onPress={movementOptions.includes(30) ? () => HandleTeleport(30, 340-15, 50, "pink", "no") : null}><Image source={pinkAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 40, left: 40}, movementOptions.includes(31) ? styles.is_option : null]} onPress={movementOptions.includes(31) ? () => HandleTeleport(31, 340-40, 40, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 65, left: 35}, movementOptions.includes(32) ? styles.is_option : null]} onPress={movementOptions.includes(32) ? () => HandleTeleport(32, 340-65, 35, "yellow", "no") : null}><Image source={yellowAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 240, left: 25}, movementOptions.includes(33) ? styles.is_option : null]} onPress={movementOptions.includes(33) ? () => HandleTeleport(33, 240, 25, "blue", "no") : null}><Image source={blueAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 215, left: 18}, movementOptions.includes(34) ? styles.is_option : null]} onPress={movementOptions.includes(34) ? () => HandleTeleport(34, 215, 18, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 190, left: 10}, movementOptions.includes(35) ? styles.is_option : null]} onPress={movementOptions.includes(35) ? () => HandleTeleport(35, 190, 10, "purple", "no") : null}><Image source={purpleAsteroid} style={styles.asteroid}/></TouchableOpacity>
           
-          <TouchableOpacity style={[styles.planetBox, {top: 160, left: 0}, opcionesMovimiento.includes(36) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(36) ? () => HandleTeleport(36, 160, 0, "green", "si") : null}><Image source={planetaVerde} style={styles.planet}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 195, left: 10}, opcionesMovimiento.includes(37) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(37) ? () => HandleTeleport(37, 340-195, 10, "yellow", "no") : null}><Image source={asteroideAmarillo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 220, left: 18}, opcionesMovimiento.includes(38) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(38) ? () => HandleTeleport(38, 340-220, 18, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 245, left: 25}, opcionesMovimiento.includes(39) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(39) ? () => HandleTeleport(39, 340-245, 25, "blue", "no") : null}><Image source={asteroideAzul} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 60, left: 35}, opcionesMovimiento.includes(40) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(40) ? () => HandleTeleport(40, 60, 35, "purple", "no") : null}><Image source={asteroideMorado} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 35, left: 40}, opcionesMovimiento.includes(41) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(41) ? () => HandleTeleport(41, 35, 40, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 10, left: 50}, opcionesMovimiento.includes(42) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(42) ? () => HandleTeleport(42, 10, 50, "red", "no") : null}><Image source={asteroideRojo} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.planetBox, {top: 160, left: 0}, movementOptions.includes(36) ? styles.is_option : null]} onPress={movementOptions.includes(36) ? () => HandleTeleport(36, 160, 0, "green", "si") : null}><Image source={greenPlanet} style={styles.planet}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 195, left: 10}, movementOptions.includes(37) ? styles.is_option : null]} onPress={movementOptions.includes(37) ? () => HandleTeleport(37, 340-195, 10, "yellow", "no") : null}><Image source={yellowAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 220, left: 18}, movementOptions.includes(38) ? styles.is_option : null]} onPress={movementOptions.includes(38) ? () => HandleTeleport(38, 340-220, 18, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 245, left: 25}, movementOptions.includes(39) ? styles.is_option : null]} onPress={movementOptions.includes(39) ? () => HandleTeleport(39, 340-245, 25, "blue", "no") : null}><Image source={blueAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 60, left: 35}, movementOptions.includes(40) ? styles.is_option : null]} onPress={movementOptions.includes(40) ? () => HandleTeleport(40, 60, 35, "purple", "no") : null}><Image source={purpleAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 35, left: 40}, movementOptions.includes(41) ? styles.is_option : null]} onPress={movementOptions.includes(41) ? () => HandleTeleport(41, 35, 40, "satellite", "no") : null}><Image source={satellite} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 10, left: 50}, movementOptions.includes(42) ? styles.is_option : null]} onPress={movementOptions.includes(42) ? () => HandleTeleport(42, 10, 50, "red", "no") : null}><Image source={redAsteroid} style={styles.asteroid}/></TouchableOpacity>
 
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 300, left: 85}, opcionesMovimiento.includes(51) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(51) ? () => HandleTeleport(51, 340-300, 85, "green", "si") : null}><Image source={asteroideVerde} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 275, left: 96}, opcionesMovimiento.includes(52) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(52) ? () => HandleTeleport(52, 340-275, 96, "red", "no") : null}><Image source={asteroideRojo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 250, left: 115}, opcionesMovimiento.includes(53) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(53) ? () => HandleTeleport(53, 340-250, 115, "purple", "no") : null}><Image source={asteroideMorado} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 225, left: 125}, opcionesMovimiento.includes(54) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(54) ? () => HandleTeleport(54, 340-225, 125, "blue", "no") : null}><Image source={asteroideAzul} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 200, left: 140}, opcionesMovimiento.includes(55) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(55) ? () => HandleTeleport(85, 340-200, 140, "yellow", "no") : null}><Image source={asteroideAmarillo} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 300, left: 85}, movementOptions.includes(51) ? styles.is_option : null]} onPress={movementOptions.includes(51) ? () => HandleTeleport(51, 340-300, 85, "green", "si") : null}><Image source={greenAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 275, left: 96}, movementOptions.includes(52) ? styles.is_option : null]} onPress={movementOptions.includes(52) ? () => HandleTeleport(52, 340-275, 96, "red", "no") : null}><Image source={redAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 250, left: 115}, movementOptions.includes(53) ? styles.is_option : null]} onPress={movementOptions.includes(53) ? () => HandleTeleport(53, 340-250, 115, "purple", "no") : null}><Image source={purpleAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 225, left: 125}, movementOptions.includes(54) ? styles.is_option : null]} onPress={movementOptions.includes(54) ? () => HandleTeleport(54, 340-225, 125, "blue", "no") : null}><Image source={blueAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 200, left: 140}, movementOptions.includes(55) ? styles.is_option : null]} onPress={movementOptions.includes(55) ? () => HandleTeleport(85, 340-200, 140, "yellow", "no") : null}><Image source={yellowAsteroid} style={styles.asteroid}/></TouchableOpacity>
 
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 300, right: 85}, opcionesMovimiento.includes(61) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(61) ? () => HandleTeleport(61, 340-300, 340-85, "pink", "no") : null}><Image source={asteroideRosa} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 275, right: 96}, opcionesMovimiento.includes(62) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(62) ? () => HandleTeleport(62, 340-275, 340-96, "green", "no") : null}><Image source={asteroideVerde} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 250, right: 115}, opcionesMovimiento.includes(63) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(63) ? () => HandleTeleport(63, 340-250, 340-115, "red", "no") : null}><Image source={asteroideRojo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 225, right: 125}, opcionesMovimiento.includes(64) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(64) ? () => HandleTeleport(64, 340-225, 340-125, "purple", "no") : null}><Image source={asteroideMorado} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {bottom: 200, right: 140}, opcionesMovimiento.includes(65) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(65) ? () => HandleTeleport(65, 340-200, 340-140, "blue", "no") : null}><Image source={asteroideAzul} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 300, right: 85}, movementOptions.includes(61) ? styles.is_option : null]} onPress={movementOptions.includes(61) ? () => HandleTeleport(61, 340-300, 340-85, "pink", "no") : null}><Image source={pinkAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 275, right: 96}, movementOptions.includes(62) ? styles.is_option : null]} onPress={movementOptions.includes(62) ? () => HandleTeleport(62, 340-275, 340-96, "green", "no") : null}><Image source={greenAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 250, right: 115}, movementOptions.includes(63) ? styles.is_option : null]} onPress={movementOptions.includes(63) ? () => HandleTeleport(63, 340-250, 340-115, "red", "no") : null}><Image source={redAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 225, right: 125}, movementOptions.includes(64) ? styles.is_option : null]} onPress={movementOptions.includes(64) ? () => HandleTeleport(64, 340-225, 340-125, "purple", "no") : null}><Image source={purpleAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {bottom: 200, right: 140}, movementOptions.includes(65) ? styles.is_option : null]} onPress={movementOptions.includes(65) ? () => HandleTeleport(65, 340-200, 340-140, "blue", "no") : null}><Image source={blueAsteroid} style={styles.asteroid}/></TouchableOpacity>
 
-          <TouchableOpacity style={[styles.asteroidBox, {top: 164, left: 300}, opcionesMovimiento.includes(71) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(71) ? () => HandleTeleport(71, 164, 300, "yellow", "no") : null}><Image source={asteroideAmarillo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 157, left: 275}, opcionesMovimiento.includes(72) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(72) ? () => HandleTeleport(72, 157, 275, "pink", "no") : null}><Image source={asteroideRosa} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 162, left: 250}, opcionesMovimiento.includes(73) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(73) ? () => HandleTeleport(73, 162, 250, "green", "no") : null}><Image source={asteroideVerde} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 157, left: 225}, opcionesMovimiento.includes(74) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(74) ? () => HandleTeleport(74, 157, 225, "red", "no") : null}><Image source={asteroideRojo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 163, left: 200}, opcionesMovimiento.includes(75) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(75) ? () => HandleTeleport(75, 163, 200, "purple", "no") : null}><Image source={asteroideMorado} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 164, left: 300}, movementOptions.includes(71) ? styles.is_option : null]} onPress={movementOptions.includes(71) ? () => HandleTeleport(71, 164, 300, "yellow", "no") : null}><Image source={yellowAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 157, left: 275}, movementOptions.includes(72) ? styles.is_option : null]} onPress={movementOptions.includes(72) ? () => HandleTeleport(72, 157, 275, "pink", "no") : null}><Image source={pinkAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 162, left: 250}, movementOptions.includes(73) ? styles.is_option : null]} onPress={movementOptions.includes(73) ? () => HandleTeleport(73, 162, 250, "green", "no") : null}><Image source={greenAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 157, left: 225}, movementOptions.includes(74) ? styles.is_option : null]} onPress={movementOptions.includes(74) ? () => HandleTeleport(74, 157, 225, "red", "no") : null}><Image source={redAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 163, left: 200}, movementOptions.includes(75) ? styles.is_option : null]} onPress={movementOptions.includes(75) ? () => HandleTeleport(75, 163, 200, "purple", "no") : null}><Image source={purpleAsteroid} style={styles.asteroid}/></TouchableOpacity>
 
-          <TouchableOpacity style={[styles.asteroidBox, {top: 300, right: 85}, opcionesMovimiento.includes(81) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(81) ? () => HandleTeleport(81, 300, 340-85, "pink", "no") : null}><Image source={asteroideAzul} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 275, right: 96}, opcionesMovimiento.includes(82) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(82) ? () => HandleTeleport(82, 275, 340-96, "pink", "no") : null}><Image source={asteroideAmarillo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 250, right: 115}, opcionesMovimiento.includes(83) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(83) ? () => HandleTeleport(83, 250, 340-115, "pink", "no") : null}><Image source={asteroideRosa} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 225, right: 125}, opcionesMovimiento.includes(84) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(84) ? () => HandleTeleport(84, 225, 340-125, "pink", "no") : null}><Image source={asteroideVerde} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 200, right: 140}, opcionesMovimiento.includes(85) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(85) ? () => HandleTeleport(85, 200, 340-140, "pink", "no") : null}><Image source={asteroideRojo} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 300, right: 85}, movementOptions.includes(81) ? styles.is_option : null]} onPress={movementOptions.includes(81) ? () => HandleTeleport(81, 300, 340-85, "pink", "no") : null}><Image source={blueAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 275, right: 96}, movementOptions.includes(82) ? styles.is_option : null]} onPress={movementOptions.includes(82) ? () => HandleTeleport(82, 275, 340-96, "pink", "no") : null}><Image source={yellowAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 250, right: 115}, movementOptions.includes(83) ? styles.is_option : null]} onPress={movementOptions.includes(83) ? () => HandleTeleport(83, 250, 340-115, "pink", "no") : null}><Image source={pinkAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 225, right: 125}, movementOptions.includes(84) ? styles.is_option : null]} onPress={movementOptions.includes(84) ? () => HandleTeleport(84, 225, 340-125, "pink", "no") : null}><Image source={greenAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 200, right: 140}, movementOptions.includes(85) ? styles.is_option : null]} onPress={movementOptions.includes(85) ? () => HandleTeleport(85, 200, 340-140, "pink", "no") : null}><Image source={redAsteroid} style={styles.asteroid}/></TouchableOpacity>
 
-          <TouchableOpacity style={[styles.asteroidBox, {top: 300, left: 85}, opcionesMovimiento.includes(91) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(91) ? () => HandleTeleport(91, 300, 85, "pink", "no") : null}><Image source={asteroideMorado} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 275, left: 96}, opcionesMovimiento.includes(92) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(92) ? () => HandleTeleport(92, 275, 96, "pink", "no") : null}><Image source={asteroideAzul} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 250, left: 115}, opcionesMovimiento.includes(93) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(93) ? () => HandleTeleport(93, 250, 115, "pink", "no") : null}><Image source={asteroideAmarillo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 225, left: 125}, opcionesMovimiento.includes(94) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(94) ? () => HandleTeleport(94, 225, 125, "pink", "no") : null}><Image source={asteroideRosa} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 200, left: 140}, opcionesMovimiento.includes(95) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(95) ? () => HandleTeleport(85, 200, 140, "pink", "no") : null}><Image source={asteroideVerde} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 300, left: 85}, movementOptions.includes(91) ? styles.is_option : null]} onPress={movementOptions.includes(91) ? () => HandleTeleport(91, 300, 85, "pink", "no") : null}><Image source={purpleAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 275, left: 96}, movementOptions.includes(92) ? styles.is_option : null]} onPress={movementOptions.includes(92) ? () => HandleTeleport(92, 275, 96, "pink", "no") : null}><Image source={blueAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 250, left: 115}, movementOptions.includes(93) ? styles.is_option : null]} onPress={movementOptions.includes(93) ? () => HandleTeleport(93, 250, 115, "pink", "no") : null}><Image source={yellowAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 225, left: 125}, movementOptions.includes(94) ? styles.is_option : null]} onPress={movementOptions.includes(94) ? () => HandleTeleport(94, 225, 125, "pink", "no") : null}><Image source={pinkAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 200, left: 140}, movementOptions.includes(95) ? styles.is_option : null]} onPress={movementOptions.includes(95) ? () => HandleTeleport(85, 200, 140, "pink", "no") : null}><Image source={greenAsteroid} style={styles.asteroid}/></TouchableOpacity>
 
-          <TouchableOpacity style={[styles.asteroidBox, {top: 164, right: 300}, opcionesMovimiento.includes(101) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(101) ? () => HandleTeleport(101, 164, 340-300, "pink", "no") : null}><Image source={asteroideRojo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 157, right: 275}, opcionesMovimiento.includes(102) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(102) ? () => HandleTeleport(102, 157, 340-275, "pink", "no") : null}><Image source={asteroideMorado} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 162, right: 250}, opcionesMovimiento.includes(103) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(103) ? () => HandleTeleport(103, 162, 340-250, "pink", "no") : null}><Image source={asteroideAzul} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 157, right: 225}, opcionesMovimiento.includes(104) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(104) ? () => HandleTeleport(104, 157, 340-225, "pink", "no") : null}><Image source={asteroideAmarillo} style={styles.asteroid}/></TouchableOpacity>
-          <TouchableOpacity style={[styles.asteroidBox, {top: 163, right: 200}, opcionesMovimiento.includes(105) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(105) ? () => HandleTeleport(105, 163, 340-200, "pink", "no") : null}><Image source={asteroideRosa} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 164, right: 300}, movementOptions.includes(101) ? styles.is_option : null]} onPress={movementOptions.includes(101) ? () => HandleTeleport(101, 164, 340-300, "pink", "no") : null}><Image source={redAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 157, right: 275}, movementOptions.includes(102) ? styles.is_option : null]} onPress={movementOptions.includes(102) ? () => HandleTeleport(102, 157, 340-275, "pink", "no") : null}><Image source={purpleAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 162, right: 250}, movementOptions.includes(103) ? styles.is_option : null]} onPress={movementOptions.includes(103) ? () => HandleTeleport(103, 162, 340-250, "pink", "no") : null}><Image source={blueAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 157, right: 225}, movementOptions.includes(104) ? styles.is_option : null]} onPress={movementOptions.includes(104) ? () => HandleTeleport(104, 157, 340-225, "pink", "no") : null}><Image source={yellowAsteroid} style={styles.asteroid}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.asteroidBox, {top: 163, right: 200}, movementOptions.includes(105) ? styles.is_option : null]} onPress={movementOptions.includes(105) ? () => HandleTeleport(105, 163, 340-200, "pink", "no") : null}><Image source={pinkAsteroid} style={styles.asteroid}/></TouchableOpacity>
 
-          <TouchableOpacity style={[styles.rocketBox, {top: 150, left: 150,}, opcionesMovimiento.includes(1000) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(1000) ? () => HandleTeleport(1000, 180, 180) : null}><Image source={rocket} style={styles.rocket}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.rocketBox, {top: 150, left: 150,}, movementOptions.includes(1000) ? styles.is_option : null]} onPress={movementOptions.includes(1000) ? () => HandleTeleport(1000, 180, 180) : null}><Image source={rocket} style={styles.rocket}/></TouchableOpacity>
           
           <View style={[styles.ficha, {top: red_cords[0], left: red_cords[1], backgroundColor: '#f90a0a'}]}></View>
           {context.number_of_players > 1 ? <View style={[styles.ficha, {top: green_cords[0], left: green_cords[1], backgroundColor: '#37ee2e'}]}></View> : null}
@@ -495,7 +490,7 @@ function Tablero({ navigation }) {
           {dice && 
             <View style={styles.dadoBox}>
             <TouchableOpacity style={styles.dadoThrow} onPress={HandleDice}>
-            {textoMolesto && (<Text style={styles.dadoThrowText}>THROW DICE</Text>)}
+            {annoyingText && (<Text style={styles.dadoThrowText}>THROW DICE</Text>)}
             </TouchableOpacity>
               {dice2 && (
                 <>

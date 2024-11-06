@@ -1,5 +1,3 @@
-import React, { useEffect, useState, useContext  } from 'react';
-
 import history from '../cards/history.json';
 import sport from '../cards/sport.json';
 import geography from '../cards/geography.json';
@@ -8,8 +6,6 @@ import entertainment from '../cards/entertainment.json';
 import literature from '../cards/literature.json';
 
 function findQuestion({ category }) {
-  console.log('WE ARE INSIDE');
-  console.log(category);
   let questionBlock;
 
   switch (category) {
@@ -41,8 +37,6 @@ function findQuestion({ category }) {
       console.error(`Category "${category}" is not supported.`);
       return undefined;
   }
-
-  console.log('Selected question block:', questionBlock);
   return questionBlock;
 }
 

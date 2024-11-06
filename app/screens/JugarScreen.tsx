@@ -3,44 +3,43 @@ import { View, Text, Image , StyleSheet, TouchableOpacity } from 'react-native';
 import { Slider } from '@react-native-assets/slider'
 import { MyContext } from '../modules/MyContext';
 
-const un_jugador = require('../../assets/images/1j.png');
-const dos_jugador = require('../../assets/images/2j.png');
-const tres_jugador = require('../../assets/images/3j.png');
-const cuatro_jugador = require('../../assets/images/4j.png');
-const cinco_jugador = require('../../assets/images/5j.png');
-const seis_jugador = require('../../assets/images/6j.png');
-const siete_jugador = require('../../assets/images/7j.png');
-const ocho_jugador = require('../../assets/images/8j.png');
+const one_player = require('../../assets/images/1j.png');
+const two_player = require('../../assets/images/2j.png');
+const three_player = require('../../assets/images/3j.png');
+const four_player = require('../../assets/images/4j.png');
+const five_player = require('../../assets/images/5j.png');
+const six_player = require('../../assets/images/6j.png');
+const seven_player = require('../../assets/images/7j.png');
+const eight_player = require('../../assets/images/8j.png');
 
 function JugarScreen({ navigation }) {
 
   const context = useContext(MyContext);
-  const [imageSource, setImageSource] = useState(un_jugador);
+  const [imageSource, setImageSource] = useState(one_player);
   const [sliderValue, setSliderValue] = useState(1);
 
   const handleSliderChange = (value) => {
     if (value == 1) {
-      setImageSource(un_jugador);
+      setImageSource(one_player);
     } else if (value == 2){
-      setImageSource(dos_jugador);
+      setImageSource(two_player);
     } else if (value == 3){
-      setImageSource(tres_jugador);
+      setImageSource(three_player);
     } else if (value == 4){
-      setImageSource(cuatro_jugador);
+      setImageSource(four_player);
     } else if (value == 5){
-      setImageSource(cinco_jugador);
+      setImageSource(five_player);
     } else if (value == 6){
-      setImageSource(seis_jugador);
+      setImageSource(six_player);
     } else if (value == 7){
-      setImageSource(siete_jugador);
+      setImageSource(seven_player);
     } else {
-      setImageSource(ocho_jugador);
+      setImageSource(eight_player);
     }
     setSliderValue(value);
   };
 
   const handleNextPress = () => {
-    console.log(sliderValue);
     context.setNumberOfPlayers(sliderValue);
     navigation.navigate('CategoriasMain');
 
