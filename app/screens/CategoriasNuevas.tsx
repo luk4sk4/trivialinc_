@@ -2,7 +2,6 @@ import React, { useContext  } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { MyContext } from '../modules/MyContext';
 
-
 const white = require('../../assets/images/star_white.png');
 const red = require('../../assets/images/star_red.png');
 const green = require('../../assets/images/star_green.png');
