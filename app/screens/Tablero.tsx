@@ -347,7 +347,7 @@ function Tablero({ navigation }) {
               <TouchableOpacity onPress={() => navigation.navigate('CategoriasMain')}>
                 <Image
                 style={styles.topImages}
-                source={require('../../assets/images/pin_white.png')}
+                source={require('../../assets/images/back.png')}
                 />
               </TouchableOpacity>
           </View>
@@ -365,7 +365,7 @@ function Tablero({ navigation }) {
           <TouchableOpacity style={styles.backBox} onPress={HandleNextTurn}>
                 <Image
                 style={styles.topImages}
-                source={require('../../assets/images/pin_white.png')}
+                source={require('../../assets/images/settings.png')}
                 />
           </TouchableOpacity>
           </View>
@@ -394,7 +394,7 @@ function Tablero({ navigation }) {
           </View>
           )}
 
-          <Text style={[{color: 'white'}]}>TURN OF PLAYER {turn}</Text>
+          <Text style={[styles.playerText, {color: 'white'}]}>TURN OF PLAYER {turn}</Text>
           <View style={[styles.mapBox]}>
 
           <TouchableOpacity style={[styles.planetBox, {top: 0, left: 75}, opcionesMovimiento.includes(1) ? styles.is_option : null]} onPress={opcionesMovimiento.includes(1) ? () => HandleTeleport(1, 0, 75, "pink", "si") : null}><Image source={planetaRosa} style={styles.planet}/></TouchableOpacity>
@@ -693,7 +693,6 @@ const styles = StyleSheet.create({
     },
     leyendaBox: {
       margin: 25,
-      backgroundColor: 'green',
       width: 150,
       height: 50,
     },
@@ -703,7 +702,6 @@ const styles = StyleSheet.create({
       resizeMode: 'contain',
     },
     backBox: {
-      backgroundColor: 'red',
       margin: 25,
       width: 50,
       height: 50,

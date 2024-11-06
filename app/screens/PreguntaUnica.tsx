@@ -206,7 +206,7 @@ useEffect(() => {
           </View>
         : null}
           <View style={styles.midSmallContainer}>
-            <Text style={styles.text1}>CATEGORY: {}</Text>
+            <Text style={styles.text1}>CATEGORY: {category?.toUpperCase()}</Text>
           </View>
           <View style={[styles.questionBox, { borderColor: color }]}>
             {see_question ? 
@@ -230,7 +230,7 @@ useEffect(() => {
             <View style={styles.buttonBox}>
             <TouchableOpacity onPress={() => handleBack('nextTurn')}>
               <Image
-                style={styles.correctIncorrect}
+                style={styles.incorrect}
                 source={require('../../assets/images/incorrect.png')}
                 />
             </TouchableOpacity>
@@ -238,7 +238,7 @@ useEffect(() => {
             <View style={styles.buttonBox}>
             <TouchableOpacity onPress={() => handleBack('throwAgain')}>
               <Image
-                style={styles.correctIncorrect}
+                style={styles.correct}
                 source={require('../../assets/images/correct.png')}
                 />
             </TouchableOpacity>
@@ -305,9 +305,13 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
-  correctIncorrect: {
+  correct: {
     width: 100,
     height: 100,
+  },
+  incorrect: {
+    width: 80,
+    height: 80,
   },
   questionBox: {
     width: 350,
