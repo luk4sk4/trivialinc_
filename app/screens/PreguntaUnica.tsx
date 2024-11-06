@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useContext  } from 'react';
 import { View, Text, Image , StyleSheet, TouchableOpacity } from 'react-native';
-import { Slider } from '@react-native-assets/slider'
 import { MyContext } from '../modules/MyContext';
-import { useRoute } from '@react-navigation/native';
-import { useEvent } from 'react-native-reanimated';
 import findQuestion from '../components/takeQuestion';
 
 
@@ -39,7 +36,7 @@ function PreguntaUnica({ route, navigation }) {
   const [answer, setAnswer] = useState(undefined);
 
   const fetchQuestion = async () => {
-    setQuestion(undefined); // Set question to undefined while loading
+    setQuestion(undefined); 
     try {
       const questionBlock = await findQuestion({ category });
       console.log('Hi mate!', questionBlock.question);
@@ -51,7 +48,7 @@ function PreguntaUnica({ route, navigation }) {
   };
 
   useEffect(() => {
-    fetchQuestion(); // Call the async function
+    fetchQuestion();
   }, [category]);
 
   const { player, place, onGoBack } = route.params;
@@ -116,10 +113,6 @@ function PreguntaUnica({ route, navigation }) {
     quesitos = context?.quesitos_eight;
     jugador = jugador8;
   }
-
-  //comprobar quesito y color de este
-  //if (place in [])
-  //comprobar color
 
 useEffect(() => {
 

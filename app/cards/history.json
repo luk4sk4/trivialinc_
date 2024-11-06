@@ -1,22 +1,22 @@
 [
-  {
-    "question": "Who was the first President of the United States?",
-    "answer": "George Washington"
-  },
-  {
-    "question": "Which ancient civilization built the Great Pyramid of Giza?",
-    "answer": "The Egyptians"
-  },
-  {
-    "question": "The Treaty of Versailles was signed in which year?",
-    "answer": "1919"
-  },
-  {
-    "question": "The Roman Empire fell in which century?",
-    "answer": "The 5th century"
-  },
-  {
-    "question": "The Battle of Hastings took place in which year?",
-    "answer": "1066"
-  }
+    {
+        "question": "Who was the first President of the United States?",
+        "answer": "George Washington"
+    },
+    {
+        "question": "Which ancient civilization built the Great Pyramid of Giza?",
+        "answer": "The Egyptians"
+    },
+    {
+        "question": "The Treaty of Versailles was signed in which year?",
+        "answer": "1919"
+    },
+    {
+        "question": "The Roman Empire fell in which century?",
+        "answer": "The 5th century"
+    },
+    {
+        "question": "The Battle of Hastings took place in which year?",
+        "answer": "1066"
+    }
 ]
