@@ -1,6 +1,8 @@
 import React, { useState, useContext  } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { MyContext } from '../modules/MyContext';
+import styles from '../modules/styles';
+
 
 const white = require('../../assets/images/star_white.png');
 const red = require('../../assets/images/star_red.png');
@@ -69,18 +71,18 @@ function CategoriasMain({ navigation }) {
             <Text style={styles.buttonText}> CHOOSE 6 CATEGORIES </Text>
         </View>
         <View style={styles.midContainer}>
-            <View style={styles.buttonBox}>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CategoriasClasicas')}>
+            <View style={styles.categoryClassButtonBox}>
+                <TouchableOpacity style={styles.categoryClassButton} onPress={() => navigation.navigate('CategoriasClasicas')}>
                     <Text style={styles.buttonText}>CLASSIC CATEGORIES</Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.buttonBox}>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CategoriasNuevas')}>
+            <View style={styles.categoryClassButtonBox}>
+                <TouchableOpacity style={styles.categoryClassButton} onPress={() => navigation.navigate('CategoriasNuevas')}>
                     <Text style={styles.buttonText}>NEW CATEGORIES</Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.buttonBox}>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CategoriasAmigos')}>
+            <View style={styles.categoryClassButtonBox}>
+                <TouchableOpacity style={styles.categoryClassButton} onPress={() => navigation.navigate('CategoriasAmigos')}>
                     <Text style={styles.buttonText}>FRIEND KNOWLEDGE</Text>
                 </TouchableOpacity>
             </View>
@@ -138,117 +140,5 @@ function CategoriasMain({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#0004ff',
-    },
-    topContainer: {
-        width: 400,
-        height: 50,
-        borderBottomWidth: 3,
-        borderColor: '#ffffff',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    midContainer: {
-        width: 400,
-        height: 500,
-        margin: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    bottomContainer: {
-        width: 400,
-        borderTopWidth: 3,
-        borderColor: '#ffffff',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    buttonBox: {
-        width: 250,
-        height: 100,
-        margin: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    button: {
-        borderWidth: 3,
-        borderColor: '#ffffff',
-        width: 250,
-        height: 75,
-        marginVertical: 10,
-        borderRadius: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    playButton: {
-        borderWidth: 2,
-        borderColor: '#ffffff',
-        width: 250,
-        height: 50,
-        marginVertical: 10,
-        borderRadius: 25,
-        justifyContent: 'center', 
-        alignItems: 'center',
-    },
-    buttonText: {
-        color: '#fff',
-        fontSize: 20,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        fontFamily: 'TTLAKES', 
-    },
-    circlesContainer: {
-        width: 350,
-        height: 50,
-        margin: 10,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    circle: {
-        borderWidth: 2,
-        borderColor: '#ffffff',
-        width: 50,
-        height: 50,
-        margin: 5,
-        borderRadius: 25,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    imagenBrillo: {
-        width: 50,
-        height: 50,
-        margin: 5,
-        resizeMode: "contain",
-    },
-    errorPopUp: {
-      position: 'absolute',
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: 400,
-      height: 800,
-      backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    },
-    errorBox: {
-      width: 250,
-      height: 100,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#ffffff',
-      borderColor: '#ffffff',
-      borderWidth: 2,
-      borderRadius: 20,
-      },
-      errorText: {
-      textAlign: 'center',
-      color: '#141823',
-      },
-  });
 
 export default CategoriasMain;

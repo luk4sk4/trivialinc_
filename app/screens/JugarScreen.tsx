@@ -1,5 +1,5 @@
 import React, { useState, useContext  } from 'react';
-import { View, Text, Image , StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Slider } from '@react-native-assets/slider'
 import { MyContext } from '../modules/MyContext';
 import styles from '../modules/styles';

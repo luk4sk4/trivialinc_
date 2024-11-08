@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect  } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { MyContext } from '../modules/MyContext';
+import styles from '../modules/styles';
+
 
 
 const white = require('../../assets/images/star_white.png');
@@ -222,122 +224,5 @@ function CategoriasClasicas({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#0004ff',
-    },
-    topContainer: {
-        width: 400,
-        height: 50,
-        borderBottomWidth: 3,
-        borderColor: '#ffffff',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    midContainer: {
-        width: 400,
-        height: 550,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    bottomContainer: {
-        width: 400,
-        borderTopWidth: 3,
-        borderColor: '#ffffff',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    buttonBox: {
-        width: 250,
-        height: 100,
-        margin: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    rowBox: {
-      width: 400,
-      height: 190,
-      justifyContent: 'space-evenly',
-      flexDirection: 'row',
-    },
-    category: {
-      height: 150,
-      width: 150,
-      marginVertical: 10,
-      borderWidth: 3,
-      borderRadius: 10,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderColor: '#ffffff',
-    },
-    red: {
-      borderColor: '#f90a0a',
-    },
-    green: {
-      borderColor: '#37ee2e',
-    },
-    pink: {
-      borderColor: '#ff00c6',
-    },
-    blue: {
-      borderColor: '#00eaff',
-    },
-    purple: {
-      borderColor: '#ba00ff',
-    },
-    yellow: {
-      borderColor: '#fff600',
-    },
-    white: {
-      borderColor: '#ffffff',
-    },
-    playButton: {
-        borderWidth: 2,
-        borderColor: '#ffffff',
-        width: 250,
-        height: 50,
-        marginVertical: 10,
-        borderRadius: 25,
-        justifyContent: 'center',  // Centra el contenido verticalmente
-        alignItems: 'center',
-    },
-    buttonText: {
-        color: '#fff',
-        fontSize: 20,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        fontFamily: 'TTLAKES',  //tengo que buscar como usar la custom font sin gastaar muchos recursos
-        flexWrap: 'wrap',
-
-    },
-    circlesContainer: {
-        width: 350,
-        height: 50,
-        margin: 10,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    circle: {
-        borderWidth: 2,
-        borderColor: '#ffffff',
-        width: 50,
-        height: 50,
-        margin: 5,
-        borderRadius: 25,
-        justifyContent: 'center',  // Centra el contenido verticalmente
-        alignItems: 'center',
-    },
-    imagenBrillo: {
-        width: 50,
-        height: 50,
-        margin: 5,
-        resizeMode: "contain",
-    },
-  });
 
 export default CategoriasClasicas;
