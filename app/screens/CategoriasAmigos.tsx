@@ -2,6 +2,7 @@ import React, { useContext  } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { MyContext } from '../modules/MyContext';
 import styles from '../modules/styles';
+import know_your_friends from '../cards/friends.json'
 
 
 const white = require('../../assets/images/star_white.png');
@@ -14,8 +15,17 @@ const yellow = require('../../assets/images/star_yellow.png');
 
 
 function CategoriasAmigos({ navigation }) {
+  const category_selection = () => {
+    for (let i = 0; i<know_your_friends.length; i++){
+      category_array.push(know_your_friends[i].category)
+    }
+  }
+  const category_array = [];
+  category_selection();
+  
+  
 
-  const category_array = ["lucas", "rosio", "marina", "juan", "pedro"];
+  
 
   const context = useContext(MyContext);
 
