@@ -225,6 +225,199 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#141823',
         },
+
+
+
+
+
+        
+        //main thing
+        topContainerMap: {
+          width: 400,
+          height: 100,
+          borderBottomWidth: 3,
+          borderColor: '#ffffff',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexDirection: 'row',
+      },
+        mapBox: {
+          marginTop: 10,
+          width: 350,
+          height: 350,
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        sideBox: {
+          margin: 25,
+          width: 50,
+          height: 50,
+        },
+        leyendaBox: {
+          margin: 25,
+          width: 150,
+          height: 50,
+        },
+        leyenda: {
+          width: 150,
+          height: 50,
+          resizeMode: 'contain',
+        },
+        rowAstronauts: {
+          marginTop: 10,
+          width: 400,
+          height: 100,
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+          flexDirection: 'row',
+        },
+        astronautBox: {
+          width: 100,
+          height: 100,
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          borderRadius: 20,
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        turn: {
+          borderColor: 'white',
+          borderWidth: 1,
+        },
+        astronauta: {
+          width: 75,
+          height: 75,
+        },
+        playerText: {
+          fontSize: 15,
+          textAlign: 'center',
+          fontWeight: 'bold',
+        },
+        asteroidBox: {
+          width: 20,
+          height: 20,
+          position: 'absolute',
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        asteroid: {
+          resizeMode: 'center',
+          width: 20,
+          height: 20,
+        },
+        planetBox: {
+          width: 25,
+          height: 25,
+          position: 'absolute',
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        planet: {
+          resizeMode: 'center',
+          width: 25,
+          height: 25,
+        },
+        button: {
+          backgroundColor: '#007bff',
+          padding: 10,
+          borderRadius: 5,
+        },
+        dadoBox: {
+          backgroundColor: 'rgba(255, 255, 255, 1)',
+          width: 150,
+          height: 150,
+          borderRadius: 25,
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        dadoGif: {
+          width: 100,
+          height: 100,
+        },
+        dadoResultado: {
+          fontSize: 100,
+          fontWeight: 'bold',
+          color: 'blue',
+        },
+        dadoThrow: {
+          width: 150,
+          height: 150,
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          padding: 20,
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        dadoThrowText: {
+          position: 'absolute',
+          fontSize: 20,
+          fontWeight: 'bold',
+          color: 'blue',
+          textAlign: 'center',
+        },
+        numberBox: {
+          width: 50,
+          height: 50,
+          position: 'absolute',
+          top: 10,
+          left: 10,
+        },
+        image50: {
+          width: 50,
+          height: 50,
+        },
+        numberBoxBox: {
+          position: 'absolute',
+          top: 10,
+          left: 10,
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          width: 30,
+          height: 30,
+          borderRadius: 20,
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        numberBoxBoxText: {
+          position: 'absolute',
+          fontSize: 30,
+          fontWeight: 'bold',
+          color: 'black',
+          textAlign: 'center',
+        },
+        rocketBox: {
+          position: 'absolute',
+          width: 50,
+          height: 50,
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        ficha: {
+          width: 10,
+          height: 10,
+          position: 'absolute',
+          borderRadius: 50,
+        },
+        is_option: {
+          borderWidth: 2,
+          borderColor: 'rgba(0, 255, 240, 0.8)',
+          borderRadius: 5,
+        },
+        stars: {
+          width: 15,
+          height: 15,
+        },
+        randomBox: {
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        },
+        leyendaText: {
+          margin: 10,
+          fontSize: 20,
+          fontWeight: 'bold',
+          textAlign: 'center',
+          color: 'white',
+        },
       
       
       

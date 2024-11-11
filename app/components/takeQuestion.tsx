@@ -32,7 +32,7 @@ const load_friend_questions = (category) => {
 function findQuestion({ category }) {
   let questionBlock;
 
-  if (category in ["history", "sport", "geography", "science", "entertainment", "literature"]){
+  if (["history", "sport", "geography", "science", "entertainment", "literature"].includes(category)){
     switch (category) {
       case 'history':
         questionBlock = history[Math.floor(Math.random() * history.length)];
@@ -65,8 +65,6 @@ function findQuestion({ category }) {
   }else {
     questionBlock = load_friend_questions(category);
   }
-
-  
   return questionBlock;
 }
 

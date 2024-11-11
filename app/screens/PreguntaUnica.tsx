@@ -37,9 +37,10 @@ function PreguntaUnica({ route, navigation }) {
   const [answer, setAnswer] = useState(undefined);
 
   const fetchQuestion = async () => {
-    setQuestion(undefined); 
+    setQuestion(undefined);
     try {
       const questionBlock = await findQuestion({ category });
+      if (questionBlock.question == question){fetchQuestion();}
       setQuestion(questionBlock ? questionBlock.question : "No question found.");
       setAnswer(questionBlock ? questionBlock.answer : "No answer found.");
     } catch (error) {
@@ -47,8 +48,8 @@ function PreguntaUnica({ route, navigation }) {
     }
   };
 
-  useEffect(() => {
-    fetchQuestion();
+  useEffect(() => {console.log("super cat:", category);
+    if (category != null){fetchQuestion();}
   }, [category]);
 
   const { player, place, onGoBack } = route.params;

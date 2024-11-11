@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, } from 'react-native';
 import { MyContext } from '../modules/MyContext';
+import styles from '../modules/styles';
+
 
 
 const redAsteroid = require('../../assets/images/asteroid_red.png')
@@ -337,11 +339,11 @@ function Tablero({ navigation }) {
 
   return (
     <View style={styles.container}>
-        <View style={styles.topContainer}>
-          <View style={styles.backBox}>
+        <View style={styles.topContainerMap}>
+          <View style={styles.sideBox}>
               <TouchableOpacity onPress={() => navigation.navigate('CategoriasMain')}>
                 <Image
-                style={styles.topImages}
+                style={styles.image50}
                 source={require('../../assets/images/back.png')}
                 />
               </TouchableOpacity>
@@ -357,9 +359,9 @@ function Tablero({ navigation }) {
           </View>
 
           <View>
-          <TouchableOpacity style={styles.backBox} onPress={HandleNextTurn}>
+          <TouchableOpacity style={styles.sideBox} onPress={HandleNextTurn}>
                 <Image
-                style={styles.topImages}
+                style={styles.image50}
                 source={require('../../assets/images/settings.png')}
                 />
           </TouchableOpacity>
@@ -382,7 +384,7 @@ function Tablero({ navigation }) {
 
           {dice4 && (
           <View style={styles.numberBox}>
-            <Image style={styles.numberImage} source={require('../../assets/images/dice.png')}/>
+            <Image style={styles.image50} source={require('../../assets/images/dice.png')}/>
             <View style={styles.numberBoxBox}>
               <Text style={styles.numberBoxBoxText}>{diceNumber}</Text>
             </View>
@@ -476,7 +478,7 @@ function Tablero({ navigation }) {
           <TouchableOpacity style={[styles.asteroidBox, {top: 157, right: 225}, movementOptions.includes(104) ? styles.is_option : null]} onPress={movementOptions.includes(104) ? () => HandleTeleport(104, 157, 340-225, "pink", "no") : null}><Image source={yellowAsteroid} style={styles.asteroid}/></TouchableOpacity>
           <TouchableOpacity style={[styles.asteroidBox, {top: 163, right: 200}, movementOptions.includes(105) ? styles.is_option : null]} onPress={movementOptions.includes(105) ? () => HandleTeleport(105, 163, 340-200, "pink", "no") : null}><Image source={pinkAsteroid} style={styles.asteroid}/></TouchableOpacity>
 
-          <TouchableOpacity style={[styles.rocketBox, {top: 150, left: 150,}, movementOptions.includes(1000) ? styles.is_option : null]} onPress={movementOptions.includes(1000) ? () => HandleTeleport(1000, 180, 180) : null}><Image source={rocket} style={styles.rocket}/></TouchableOpacity>
+          <TouchableOpacity style={[styles.rocketBox, {top: 150, left: 150,}, movementOptions.includes(1000) ? styles.is_option : null]} onPress={movementOptions.includes(1000) ? () => HandleTeleport(1000, 180, 180) : null}><Image source={rocket} style={styles.image50}/></TouchableOpacity>
           
           <View style={[styles.ficha, {top: red_cords[0], left: red_cords[1], backgroundColor: '#f90a0a'}]}></View>
           {context.number_of_players > 1 ? <View style={[styles.ficha, {top: green_cords[0], left: green_cords[1], backgroundColor: '#37ee2e'}]}></View> : null}
@@ -644,230 +646,5 @@ function Tablero({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      backgroundColor: '#0004ff' //'#',
-    },
-    topContainer: {
-        width: 400,
-        height: 100,
-        borderBottomWidth: 3,
-        borderColor: '#ffffff',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexDirection: 'row',
-    },
-    midContainer: {
-        width: 400,
-        height: 420,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    bottomContainer: {
-        width: 400,
-        borderTopWidth: 3,
-        borderColor: '#ffffff',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    mapBox: {
-      marginTop: 10,
-      width: 350,
-      height: 350,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    settingsBox: {
-      margin: 25,
-      backgroundColor: 'green',
-      width: 50,
-      height: 50,
-    },
-    leyendaBox: {
-      margin: 25,
-      width: 150,
-      height: 50,
-    },
-    leyenda: {
-      width: 150,
-      height: 50,
-      resizeMode: 'contain',
-    },
-    backBox: {
-      margin: 25,
-      width: 50,
-      height: 50,
-    },
-    rowAstronauts: {
-      marginTop: 10,
-      width: 400,
-      height: 100,
-      justifyContent: 'space-evenly',
-      alignItems: 'center',
-      flexDirection: 'row',
-    },
-    astronautBox: {
-      width: 100,
-      height: 100,
-      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-      borderRadius: 20,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    turn: {
-      borderColor: 'white',
-      borderWidth: 1,
-    },
-    astronauta: {
-      width: 75,
-      height: 75,
-    },
-    playerText: {
-      fontSize: 15,
-      textAlign: 'center',
-      fontWeight: 'bold',
-    },
-    asteroidBox: {
-      width: 20,
-      height: 20,
-      position: 'absolute',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    asteroid: {
-      resizeMode: 'center',
-      width: 20,
-      height: 20,
-    },
-    planetBox: {
-      width: 25,
-      height: 25,
-      position: 'absolute',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    planet: {
-      resizeMode: 'center',
-      width: 25,
-      height: 25,
-    },
-    button: {
-      backgroundColor: '#007bff', // Color de fondo del botón
-      padding: 10,                // Espaciado interno
-      borderRadius: 5,            // Bordes redondeados
-    },
-    buttonText: {
-      color: '#fff',              // Color del texto
-      fontSize: 16,               // Tamaño del texto
-    },
-    dadoBox: {
-      backgroundColor: 'rgba(255, 255, 255, 1)',
-      width: 150,
-      height: 150,
-      borderRadius: 25,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    dadoGif: {
-      width: 100,
-      height: 100,
-    },
-    dadoResultado: {
-      fontSize: 100,
-      fontWeight: 'bold',
-      color: 'blue',
-    },
-    dadoThrow: {
-      width: 150,
-      height: 150,
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      padding: 20,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    dadoThrowText: {
-      position: 'absolute',
-      fontSize: 20,
-      fontWeight: 'bold',
-      color: 'blue',
-      textAlign: 'center',
-    },
-    numberBox: {
-      width: 50,
-      height: 50,
-      position: 'absolute',
-      top: 10,
-      left: 10,
-    },
-    numberImage: {
-      width: 50,
-      height: 50,
-    },
-    numberBoxBox: {
-      position: 'absolute',
-      top: 10,
-      left: 10,
-      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-      width: 30,
-      height: 30,
-      borderRadius: 20,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    numberBoxBoxText: {
-      position: 'absolute',
-      fontSize: 30,
-      fontWeight: 'bold',
-      color: 'black',
-      textAlign: 'center',
-    },
-    rocketBox: {
-      position: 'absolute',
-      width: 50,
-      height: 50,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    rocket: {
-      width: 50,
-      height: 50,
-    },
-    ficha: {
-      width: 10,
-      height: 10,
-      position: 'absolute',
-      borderRadius: 50,
-    },
-    is_option: {
-      borderWidth: 2,
-      borderColor: 'rgba(0, 255, 240, 0.8)',
-      borderRadius: 5,
-    },
-    stars: {
-      width: 15,
-      height: 15,
-    },
-    randomBox: {
-      flexDirection: 'row',   // Arrange items in rows
-      flexWrap: 'wrap',       // Allow wrapping to the next line
-      justifyContent: 'center',
-    },
-    topImages: {
-      width: 50,
-      height: 50,
-    },
-    leyendaText: {
-      margin: 10,
-      fontSize: 20,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      color: 'white',
-    },
-    });
 
 export default Tablero;
