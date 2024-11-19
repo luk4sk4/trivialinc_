@@ -19,6 +19,8 @@ import CategoriasNuevas from './screens/CategoriasNuevas';
 import CategoriasAmigos from './screens/CategoriasAmigos';
 import Tablero from './screens/Tablero';
 import PreguntaUnica from './screens/PreguntaUnica';
+import CategoriasAmigosAdd from './screens/CategoriasAmigosAdd';
+
 
 
 
@@ -90,6 +92,7 @@ export default function Index() {
         <Stack.Screen name="CategoriasAmigos" component={CategoriasAmigos} />
         <Stack.Screen name="Tablero" component={Tablero} />
         <Stack.Screen name="PreguntaUnica" component={PreguntaUnica} />
+        <Stack.Screen name="CategoriasAmigosAdd" component={CategoriasAmigosAdd} />
       </Stack.Navigator>
     </NavigationContainer>
     </MyContext.Provider>
