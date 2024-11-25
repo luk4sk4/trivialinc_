@@ -124,10 +124,14 @@ function CategoryPage({ navigation, route  }) {
                 </View>
                 <ScrollView>
                     {object?.questions.map((question, index) => (
-                        <View style={styles.entryBox} key={index}>
+                        <TouchableOpacity style={styles.entryBox} key={index} onPress={() => navigation.navigate('QuestionModify', { 
+                            category: category, 
+                            initialQuestion: question,
+                            initialAnswer: object.answers[index],
+                          })}>
                             <Text style={styles.entryText}>Question: {question}</Text>
                             {showAnswers ? <Text style={styles.entryText}>Answer: {object.answers[index]}</Text> : null}
-                        </View>
+                        </TouchableOpacity>
                     ))}
                 </ScrollView>
             </View>

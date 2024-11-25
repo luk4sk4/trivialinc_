@@ -21,6 +21,7 @@ import Tablero from './screens/Tablero';
 import PreguntaUnica from './screens/PreguntaUnica';
 import CategoriasAmigosAdd from './screens/CategoriasAmigosAdd';
 import CategoryPage from './screens/CategoryPage';
+import QuestionModify from './screens/QuestionModify';
 
 
 
@@ -95,6 +96,8 @@ export default function Index() {
         <Stack.Screen name="PreguntaUnica" component={PreguntaUnica} />
         <Stack.Screen name="CategoriasAmigosAdd" component={CategoriasAmigosAdd} />
         <Stack.Screen name="CategoryPage" component={CategoryPage} />
+        <Stack.Screen name="QuestionModify" component={QuestionModify} />
+
       </Stack.Navigator>
     </NavigationContainer>
     </MyContext.Provider>

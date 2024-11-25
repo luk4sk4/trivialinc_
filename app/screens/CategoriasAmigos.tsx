@@ -17,7 +17,9 @@ const yellow = require('../../assets/images/star_yellow.png');
 function CategoriasAmigos({ navigation }) {
   const category_selection = () => {
     for (let i = 0; i<know_your_friends.length; i++){
-      category_array.push(know_your_friends[i].category)
+      if (!category_array.includes(know_your_friends[i].category)){
+        category_array.push(know_your_friends[i].category)
+      }
     }
   }
   const category_array = [];

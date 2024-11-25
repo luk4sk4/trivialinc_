@@ -424,8 +424,7 @@ const styles = StyleSheet.create({
         //YET TO DEFINE
 
         entryBox: {
-          backgroundColor:  'red',
-          margin: 10,
+            margin: 10,
           borderRadius: 25,
           borderWidth: 3,
           borderColor: 'white',
@@ -443,7 +442,6 @@ const styles = StyleSheet.create({
         },
 
         showBox: {
-          backgroundColor:  'red',
           margin: 10,
           borderRadius: 25,
           borderWidth: 3,
@@ -461,6 +459,21 @@ const styles = StyleSheet.create({
           textAlign: 'center',
           color: 'white',
         },
+
+
+        textBox: {
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignContent: 'center',
+          backgroundColor: 'green',
+          margin: 10,
+          
+        },
+
+        input: {
+          borderBottomWidth: 1,
+          borderColor: 'white',
+        }
       
       
       
