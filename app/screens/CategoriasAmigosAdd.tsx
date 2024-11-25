@@ -20,7 +20,7 @@ function CategoriasAmigos({ navigation }) {
 
   //OKEY WE HAVE TO HANDLE THIS
   const handleCat = (catName) => {
-    console.log(catName);
+    console.log(catName)
     if (catName == "Add new"){
       console.log("WORK IN PROGRESS");
     }

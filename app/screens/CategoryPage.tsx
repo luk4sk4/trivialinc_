@@ -1,4 +1,5 @@
-import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image} from 'react-native';
+import React, { useState, useContext, useEffect } from 'react';
 import styles from '../modules/styles';
 import history from '../cards/history.json';
 import sport from '../cards/sport.json';
@@ -9,6 +10,17 @@ import literature from '../cards/literature.json';
 import friends from '../cards/friends.json';
 
 function CategoryPage({ navigation, route  }) {
+
+    const [showAnswers, setShowAnswers] = useState(false);
+
+    const handleAnswers = () => {
+        if (showAnswers == false){
+            setShowAnswers(true);
+        } else {
+            setShowAnswers(false);
+        }
+        
+    }
 
     const { category, type } = route.params;
 
@@ -104,11 +116,17 @@ function CategoryPage({ navigation, route  }) {
                 </View>
             </View>
             <View style={styles.midContainer}>
+                <View style={styles.showBox}>
+                    <TouchableOpacity
+                    onPress={handleAnswers}>
+                        <Text style={styles.showText}> Show Answers (Y/N)</Text>
+                    </TouchableOpacity>
+                </View>
                 <ScrollView>
                     {object?.questions.map((question, index) => (
                         <View style={styles.entryBox} key={index}>
-                            <Text>Question: {object.answers[index]}</Text> //WIP
-                            <Text>Answer: {object.answers[index]}</Text>
+                            <Text style={styles.entryText}>Question: {question}</Text>
+                            {showAnswers ? <Text style={styles.entryText}>Answer: {object.answers[index]}</Text> : null}
                         </View>
                     ))}
                 </ScrollView>

@@ -419,6 +419,48 @@ const styles = StyleSheet.create({
           textAlign: 'center',
           color: 'white',
         },
+
+
+        //YET TO DEFINE
+
+        entryBox: {
+          backgroundColor:  'red',
+          margin: 10,
+          borderRadius: 25,
+          borderWidth: 3,
+          borderColor: 'white',
+          width: 400,
+          height: 100,
+          justifyContent: 'center',
+        },
+
+        entryText: {
+          margin: 10,
+          fontSize: 20,
+          fontWeight: 'bold',
+          textAlign: 'center',
+          color: 'white',
+        },
+
+        showBox: {
+          backgroundColor:  'red',
+          margin: 10,
+          borderRadius: 25,
+          borderWidth: 3,
+          borderColor: 'white',
+          width: 200,
+          height: 50,
+          justifyContent: 'center',
+          alignContent: 'center',
+        },
+
+        showText: {
+          margin: 10,
+          fontSize: 15,
+          fontWeight: 'bold',
+          textAlign: 'center',
+          color: 'white',
+        },
       
       
       
