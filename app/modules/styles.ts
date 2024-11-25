@@ -236,10 +236,11 @@ const styles = StyleSheet.create({
           width: 400,
           height: 100,
           borderBottomWidth: 3,
-          borderColor: '#ffffff',
-          justifyContent: 'space-between',
-          alignItems: 'center',
           flexDirection: 'row',
+          borderColor: '#ffffff',
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+          backgroundColor: 'red',
       },
         mapBox: {
           marginTop: 10,
@@ -259,7 +260,7 @@ const styles = StyleSheet.create({
           height: 50,
         },
         leyenda: {
-          width: 150,
+          width: 100,
           height: 50,
           resizeMode: 'contain',
         },

@@ -50,6 +50,29 @@ function JugarScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <View style={styles.topContainerMap}>
+        < View style={styles.sideBox}>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <Image
+              style={styles.image50}
+              source={require('../../assets/images/back.png')}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.leyendaBox}>
+          <Image
+            style={styles.leyenda}
+            source={require('../../assets/images/TRIVIA.png')}
+          />
+        </View>
+        <View>
+          <Image
+            style={styles.image50}
+            source={require('../../assets/images/settings.png')}
+          />
+        </View>
+      </View>
+      <View style={styles.midContainer}>
       <View>
       <Text style={styles.buttonText}>PLAYERS?</Text>
       </View>
@@ -77,9 +100,12 @@ function JugarScreen({ navigation }) {
       />
       </View>
       </View>
+      </View>
+      <View style={styles.bottomContainer}>
       <TouchableOpacity style={styles.homescreenButton} onPress={handleNextPress}>
         <Text style={styles.buttonText}>NEXT</Text>
       </TouchableOpacity>
+      </View>
     </View>
   );
 }

@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import styles from '../modules/styles';
 import know_your_friends from '../cards/friends.json'
 
@@ -20,17 +20,41 @@ function CategoriasAmigos({ navigation }) {
 
   //OKEY WE HAVE TO HANDLE THIS
   const handleCat = (catName) => {
-    if (cateName == "Add new"){}
-    else {}
+    console.log(catName);
+    if (catName == "Add new"){
+      console.log("WORK IN PROGRESS");
+    }
+    else {
+      navigation.navigate('CategoryPage', {  // Fixed: navigation with props
+        category: catName,
+        type: 'amigo'
+    });
+    }
   }
 
   
 
   return (
     <View style={styles.container}>
-        <View style={styles.topContainer}>
-            <Text style={styles.buttonText}>TEST YOUR FRIENDS</Text>
+        <View style={styles.topContainerMap}>
+        < View style={styles.sideBox}>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <Image
+              style={[styles.image50, {backgroundColor: 'green'}]}
+              source={require('../../assets/images/back.png')}
+            />
+          </TouchableOpacity>
         </View>
+        <View style={[styles.leyendaBox, {backgroundColor: 'green'}]}>
+          <Text style={styles.buttonText}>TEST YOUR FRIENDS</Text>
+        </View>
+        <View>
+          <Image
+            style={[styles.image50, {backgroundColor: 'green'}]}
+            source={require('../../assets/images/settings.png')}
+          />
+        </View>
+      </View>
         <View style={styles.midContainer}>
           <ScrollView>
           {Array.from({ length: Math.ceil(category_array.length / 2 + 1) }).map((_, index) => (
@@ -42,7 +66,7 @@ function CategoriasAmigos({ navigation }) {
               <TouchableOpacity
                 key={`${index}-${subIndex}`}
                 style={styles.category}
-                //onPress={}
+                onPress={() => handleCat(category_array[elementIndex])}  // This creates a callback
               > 
                 <Text style={styles.buttonText}>{(elementIndex < category_array.length) ? category_array[elementIndex] : "Add new"}</Text>
               </TouchableOpacity>

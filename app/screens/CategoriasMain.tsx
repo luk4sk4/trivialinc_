@@ -67,9 +67,25 @@ function CategoriasMain({ navigation }) {
 
   return (
     <View style={styles.container}>
-        <View style={styles.topContainer}>
-            <Text style={styles.buttonText}> CHOOSE 6 CATEGORIES </Text>
+        <View style={styles.topContainerMap}>
+        < View style={styles.sideBox}>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <Image
+              style={[styles.image50, {backgroundColor: 'green'}]}
+              source={require('../../assets/images/back.png')}
+            />
+          </TouchableOpacity>
         </View>
+        <View style={[styles.leyendaBox, {backgroundColor: 'green'}]}>
+          <Text style={styles.buttonText}>CHOOSE 6 CATEGORIES</Text>
+        </View>
+        <View>
+          <Image
+            style={[styles.image50, {backgroundColor: 'green'}]}
+            source={require('../../assets/images/settings.png')}
+          />
+        </View>
+      </View>
         <View style={styles.midContainer}>
             <View style={styles.categoryClassButtonBox}>
                 <TouchableOpacity style={styles.categoryClassButton} onPress={() => navigation.navigate('CategoriasClasicas')}>
